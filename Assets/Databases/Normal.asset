@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2889efc15f287d4c90621d6e924f964, type: 3}
+  m_Name: Normal
+  m_EditorClassIdentifier: Assembly-CSharp::SequenceData
+  _Name: Normal
+  memo: "\u9ED2\u3092\u51FA\u3055\u306A\u3044\n5~6\u554F\u76EE\u304B\u3089\u591A\u8272\u3092\u51FA\u3059"
+  _Stages:
+  - {fileID: 11400000, guid: 40d5ef87c79f9bc46b1602777dee940c, type: 2}
+  - {fileID: 11400000, guid: 9ad3ad56c3745c945ab9e8bbaa1dbc78, type: 2}
+  - {fileID: 11400000, guid: 31b64ebd19348bb489db50e5dcd53df7, type: 2}
+  - {fileID: 11400000, guid: 601489e6a7f7b324db405c9fcf7f735e, type: 2}
+  - {fileID: 11400000, guid: 284eaab28ca398b4996e4e37c3fa1cff, type: 2}
+  - {fileID: 11400000, guid: d9af260e585540747b8cd5b72b55cffe, type: 2}
+  - {fileID: 11400000, guid: 730d5f263c7436640a8685d6fbb32278, type: 2}
+  - {fileID: 11400000, guid: adee0ddc0cdb85147b6e457bac00acc8, type: 2}
+  - {fileID: 11400000, guid: 0a53a37f8dd9aa14d9882a6e60c965be, type: 2}
+  - {fileID: 11400000, guid: 28e7009ea2dc67844a222ad184a3020e, type: 2}
+  _InitialScores: 
