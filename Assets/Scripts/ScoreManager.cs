@@ -19,9 +19,6 @@ public class ScoreManager : MonoBehaviour
 
     public void LinkToScore(Vector3[] nodePositions, Vector2 distanceUnit){
 
-        //print(distanceUnit);
-        print("=====");
-
         //一応整数に揃えておく（必要か？？）、単位で割る
         float[,] posGrided = new float[nodePositions.Length, 2];
         {
@@ -29,12 +26,9 @@ public class ScoreManager : MonoBehaviour
                 nodePositions[0].x / distanceUnit.y,
                 nodePositions[0].y / distanceUnit.y
             );
-            print(firstPos);
             for(int i = 0; i < nodePositions.Length; i++){
                 posGrided[i, 0] = nodePositions[i].x / distanceUnit.y - firstPos.x;
                 posGrided[i, 1] = nodePositions[i].y / distanceUnit.y - firstPos.y;
-
-                print(posGrided[i, 0] + "," + posGrided[i, 1]);
             }
         }
 
