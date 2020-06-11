@@ -22,4 +22,19 @@ public static class Color2TypeExtension{
             default: return NodeType.None;
         }
     }
+
+    public static NodeColor[] ToColors(this NodeType type){
+        switch(type){
+            case NodeType.Cyan:    return new NodeColor[]{ NodeColor.Cyan };
+            case NodeType.Magenta: return new NodeColor[]{ NodeColor.Magenta };
+            case NodeType.Yellow:  return new NodeColor[]{ NodeColor.Yellow };
+            case NodeType.Green:   return new NodeColor[]{ NodeColor.Green };
+
+            case NodeType.CyanMagenta: return new NodeColor[]{ NodeColor.Cyan, NodeColor.Magenta };
+            case NodeType.Black: return new NodeColor[]{};
+            case NodeType.AllColor: return Enum.GetValues(typeof(NodeColor)) as NodeColor[];
+            
+            default: return new NodeColor[]{};
+        }
+    }
 }

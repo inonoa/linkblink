@@ -8,8 +8,13 @@ using DG.Tweening;
 
 public class NodeMover : MonoBehaviour, IVanish
 {
-    [SerializeField] protected NodeColor[] _Colors;
-    public NodeColor[] Colors => _Colors;
+    NodeColor[] _Colors;
+    public NodeColor[] Colors{
+        get{
+            if(_Colors == null) _Colors = Type.ToColors();
+            return _Colors;
+        }
+    }
 
     [SerializeField] NodeType _Type;
     public NodeType Type => _Type;
