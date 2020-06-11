@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shutter : MonoBehaviour, ITouchableByMouse
+public class Shutter : TouchableByMouse
 {
-    public bool ShutOutRay => true;
+    public override bool ShutOutRay => true;
 }

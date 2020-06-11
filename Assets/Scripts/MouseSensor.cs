@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MouseSensor : MonoBehaviour, ITouchableByMouse
+public class MouseSensor : TouchableByMouse
 {
     public bool IsTouched{ get; private set; } = false;
     public bool MouseIn{ get; private set; } = false;
     public bool MouseOut{ get; private set; } = false;
-    public bool ShutOutRay => false;
+    public override bool ShutOutRay => false;
 
     public event EventHandler<MouseEventArgs> OnMouseOn;
     public event EventHandler<MouseEventArgs> OnMouseOut;

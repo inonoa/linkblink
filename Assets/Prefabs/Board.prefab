@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 6034135894348987918}
   - component: {fileID: 6034135894348987904}
   - component: {fileID: 6034135894348987916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

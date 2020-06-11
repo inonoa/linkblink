@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ITouchableByMouse
+public abstract class TouchableByMouse : MonoBehaviour
 {
-    bool ShutOutRay{ get; }
+    public abstract bool ShutOutRay{ get; }
 }

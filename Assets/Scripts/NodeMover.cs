@@ -33,7 +33,10 @@ public class NodeMover : MonoBehaviour, IVanish
     public event EventHandler MouseOn;
     public event EventHandler MouseOut;
 
-    public MouseSensor Sensor{ get; private set; }
+    [SerializeField] MouseSensor _Sensor;
+    public MouseSensor Sensor => _Sensor;
+    [SerializeField] BeamTarget _BeamTarget;
+    public BeamTarget BeamTarget => _BeamTarget;
     [SerializeField] SoundAndVolume onMouseOnSound;
     [SerializeField] SoundAndVolume[] onSelectedSounds;
     [SerializeField] SoundAndVolume onVanishLastSound;
@@ -45,7 +48,6 @@ public class NodeMover : MonoBehaviour, IVanish
     void Start()
     {
         nodeLight = GetComponent<NodeLight>();
-        Sensor = GetComponent<MouseSensor>();
         DOVirtual.DelayedCall(
             UnityEngine.Random.Range(0, 0.3f),
             () => onAwakeSound.Play(UnityEngine.Random.Range(0.2f, 0.6f))

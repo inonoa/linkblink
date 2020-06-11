@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class BoardManager : MonoBehaviour
 {
-    ITouchableByMouse shutter;
+    TouchableByMouse shutter;
     [SerializeField] GameObject shutterObj;
 
     List<NodeMover> selectedNodes = new List<NodeMover>();
@@ -46,7 +46,7 @@ public class BoardManager : MonoBehaviour
             node.ClickedSecondTime += (s, e) => OnNodeClickedSecondTime((NodeMover)s);
         }
 
-        shutter = shutterObj.GetComponent<ITouchableByMouse>();
+        shutter = shutterObj.GetComponent<TouchableByMouse>();
     }
 
     void OnMouseOnNode(NodeMover node){
@@ -197,9 +197,11 @@ public class BoardManager : MonoBehaviour
         var target = ClickRayCaster.Instance.HitFirst;
 
         if(target != null){
-            RayHitInfo hit = RayCastUtil.RayHit(origin, target.hitPos);
+            RayHitInfo hit;
+            if(target.Hit is Shutter) hit = RayCastUtil.RayHit(origin, target.hitPos,                 LayerMask.GetMask("Default", "Shutter"));
+            else                      hit = RayCastUtil.RayHit(origin, target.Hit.transform.position, LayerMask.GetMask("Default", "Shutter"));
             if(hit == null) return (posInvalid, false);
-            if((nodeMouseOn != null) && (hit.Hit == nodeMouseOn.Sensor as ITouchableByMouse)) return (nodeMouseOn.transform.position, true);
+            if((nodeMouseOn != null) && (hit.Hit == nodeMouseOn.BeamTarget as TouchableByMouse)) return (nodeMouseOn.transform.position, true);
             return (hit.hitPos, false);
         }
 

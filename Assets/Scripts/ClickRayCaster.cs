@@ -6,23 +6,23 @@ using System;
 
 public class ClickRayCaster : MonoBehaviour
 {
-    public bool MouseOn(ITouchableByMouse touchable, out Vector3 hitPos){
+    public bool MouseOn(TouchableByMouse touchable, out Vector3 hitPos){
         bool contains = hitByRay.ContainsKey(touchable);
         hitPos = contains ? hitByRay[touchable] : new Vector3();
         return contains;
     }
 
-    public bool MouseOn(ITouchableByMouse touchable){
+    public bool MouseOn(TouchableByMouse touchable){
         return hitByRay.ContainsKey(touchable);
     }
 
-    Dictionary<ITouchableByMouse, Vector3> hitByRay = new Dictionary<ITouchableByMouse, Vector3>();
+    Dictionary<TouchableByMouse, Vector3> hitByRay = new Dictionary<TouchableByMouse, Vector3>();
     public RayHitInfo HitFirst{ get; private set; }
     void Update()
     {
         hitByRay.Clear();
 
-        var hits = RayCastUtil.RayHitsFromCamera();
+        var hits = RayCastUtil.RayHitsFromCamera(LayerMask.GetMask("MouseSensor", "Shutter", "UI"));
         bool first = true;
         foreach(RayHitInfo hit in hits){
             hitByRay.Add(hit.Hit, hit.hitPos);
