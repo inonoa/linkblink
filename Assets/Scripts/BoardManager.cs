@@ -157,26 +157,26 @@ public class BoardManager : MonoBehaviour
         node.Vanish(isLast);
     }
 
+    public void CancelSelect(){
+        if(selectedNodes.Count > 0) lineDeletedSound.Play(1);
+        foreach(NodeMover node in selectedNodes){
+            node.UnSelect();
+            if(node is RainbowNodeMover rainbow){
+                rainbow.UnSelectColor();
+            }else if(node is AllColorNodeMover allcol){
+                allcol.UnSelectColor();
+            }
+        }
+        selectedNodes.Clear();
+        colors.Clear();
+        foreach(Beam beam in beams){
+            beam.Vanish();
+        }
+        beams.Clear();
+    }
+
     void Update()
     {
-
-        if(Input.GetMouseButtonDown(1)){
-            if(selectedNodes.Count > 0) lineDeletedSound.Play(1);
-            foreach(NodeMover node in selectedNodes){
-                node.UnSelect();
-                if(node is RainbowNodeMover rainbow){
-                    rainbow.UnSelectColor();
-                }else if(node is AllColorNodeMover allcol){
-                    allcol.UnSelectColor();
-                }
-            }
-            selectedNodes.Clear();
-            colors.Clear();
-            foreach(Beam beam in beams){
-                beam.Vanish();
-            }
-            beams.Clear();
-        }
 
         if(beams.Count > 0){
             (Vector3 target, bool canReachNode) = CalcBeamTarget();

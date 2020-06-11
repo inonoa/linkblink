@@ -14,6 +14,7 @@ public class StageWatcher : MonoBehaviour
     [SerializeField] ResultManager resultManager;
     [SerializeField] StageUIsHolder stageUIsHolder;
     [SerializeField] Button resetButton;
+    [SerializeField] Button cancelButton;
     BoardManager currentBoard;
     [SerializeField] BoardManager boardPrefab;
     [SerializeField] GameObject rowPrefab;
@@ -25,7 +26,7 @@ public class StageWatcher : MonoBehaviour
     bool AcceptsInput{
         get => _AcceptsInput;
         set{
-            (resetButton.interactable, _AcceptsInput) = (value, value);
+            (resetButton.interactable, cancelButton.interactable, _AcceptsInput) = (value, value, value);
         }
     }
 
@@ -33,11 +34,17 @@ public class StageWatcher : MonoBehaviour
         resetButton.onClick.AddListener(() => {
             ResetStage();
         });
+        cancelButton.onClick.AddListener(() => {
+            currentBoard.CancelSelect();
+        });
     }
 
     void Update(){
         if(AcceptsInput && Input.GetKeyDown(KeyCode.Z)){
             ResetStage();
+        }
+        if(AcceptsInput && Input.GetMouseButtonDown(1)){
+            currentBoard.CancelSelect();
         }
     }
 
@@ -123,7 +130,10 @@ public class StageWatcher : MonoBehaviour
             currentSequence.Scores.RegisterScore(StageCounter.StageNow, scoreManager.Score);
 
             if(StageCounter.StageNow == currentSequence.Data.Stages.Count - 1){
-                stageUIsHolder.ForEach(group => group.DOFade(0, 1));
+                stageUIsHolder.ForEach(group => {
+                    group.DOFade(0, 1)
+                    .onComplete += () => group.gameObject.SetActive(false);
+                });
                 resultManager.Init(currentSequence);
                 yield break;
             }

@@ -16,7 +16,10 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         startButton.onClick.AddListener(OnStartButtonClick);
-        stageUIsHolder.ForEach(group => group.alpha = 0);
+        stageUIsHolder.ForEach(group => {
+            group.alpha = 0;
+            group.gameObject.SetActive(false);
+        });
 
         game = new Game(GameData.Instance);
         sequenceSelectManager.InitSequences(game.Sequences[0], game.Sequences[1]);

@@ -50,7 +50,10 @@ public class SequenceSelectManager : MonoBehaviour
         DOVirtual.DelayedCall(0.5f, () => gameObject.SetActive(false));
         
         DOVirtual.DelayedCall(0.5f, () => {
-            stageUIsHolder.ForEach(group => group.DOFade(1, 0.5f));
+            stageUIsHolder.ForEach(group => {
+                group.gameObject.SetActive(true);
+                group.DOFade(1, 0.5f);
+            });
         });
 
         stageWatcher.InitSequence(seq);
