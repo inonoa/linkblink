@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3f234e5f10cbe488a40e9c58605d45, type: 3}
   m_Name: DebugParameters
   m_EditorClassIdentifier: 
-  _StartStage: 3
+  _StartStage: 0
   _LoopSameStage: 0
   _LinkTrigger: 1

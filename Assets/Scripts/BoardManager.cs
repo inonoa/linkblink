@@ -161,11 +161,6 @@ public class BoardManager : MonoBehaviour
         if(selectedNodes.Count > 0) lineDeletedSound.Play(1);
         foreach(NodeMover node in selectedNodes){
             node.UnSelect();
-            if(node is RainbowNodeMover rainbow){
-                rainbow.UnSelectColor();
-            }else if(node is AllColorNodeMover allcol){
-                allcol.UnSelectColor();
-            }
         }
         selectedNodes.Clear();
         colors.Clear();
