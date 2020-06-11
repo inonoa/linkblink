@@ -68,7 +68,7 @@ public class StageDataEditor : Editor
                             var node = row.GetArrayElementAtIndex(j);
                             NodeType type = (NodeType) node.enumValueIndex;
                             GUI.color = Palette.Instance.Find(type).EditorColor;
-                            node.enumValueIndex = (int) (NodeType) EditorGUILayout.EnumPopup(type);
+                            node.enumValueIndex = (int) (NodeType) EditorGUILayout.EnumPopup(type, GUILayout.Height(50));
                             //EditorGUILayout.EnumFlagsField((NodeType) row.GetArrayElementAtIndex(j).enumValueIndex);
                         }
                         GUI.color = defaultColor;
