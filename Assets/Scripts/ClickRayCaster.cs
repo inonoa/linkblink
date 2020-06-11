@@ -6,6 +6,8 @@ using System;
 
 public class ClickRayCaster : MonoBehaviour
 {
+    [SerializeField] LayerMask layerMask;
+
     public bool MouseOn(TouchableByMouse touchable, out Vector3 hitPos){
         bool contains = hitByRay.ContainsKey(touchable);
         hitPos = contains ? hitByRay[touchable] : new Vector3();
@@ -22,7 +24,7 @@ public class ClickRayCaster : MonoBehaviour
     {
         hitByRay.Clear();
 
-        var hits = RayCastUtil.RayHitsFromCamera(LayerMask.GetMask("MouseSensor", "Shutter", "UI"));
+        var hits = RayCastUtil.RayHitsFromCamera(layerMask);
         bool first = true;
         foreach(RayHitInfo hit in hits){
             hitByRay.Add(hit.Hit, hit.hitPos);

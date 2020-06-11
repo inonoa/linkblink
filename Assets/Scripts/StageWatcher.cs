@@ -17,10 +17,17 @@ public class StageWatcher : MonoBehaviour
     BoardManager currentBoard;
     [SerializeField] BoardManager boardPrefab;
     [SerializeField] GameObject rowPrefab;
-
     
 
     [SerializeField] [ReadOnly] StageData currentStageData;
+
+    bool _AcceptsInput = true;
+    bool AcceptsInput{
+        get => _AcceptsInput;
+        set{
+            (resetButton.interactable, _AcceptsInput) = (value, value);
+        }
+    }
 
     void Start(){
         resetButton.onClick.AddListener(() => {
@@ -29,7 +36,7 @@ public class StageWatcher : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Z)){
+        if(AcceptsInput && Input.GetKeyDown(KeyCode.Z)){
             ResetStage();
         }
     }
@@ -87,10 +94,15 @@ public class StageWatcher : MonoBehaviour
     }
 
     public void InitStage(){
+        AcceptsInput = true;
+
         int index = StageCounter.StageNow;
         if(index < currentSequence.Data.Stages.Count){
             currentBoard = LoadBoard(StageCounter.StageNow);
-            currentBoard.AllNodeVanished += (s, e) => LoadNextStage();
+            currentBoard.AllNodeVanished += (s, e) => {
+                AcceptsInput = false;
+                LoadNextStage();
+            };
         }
         scoreManager.ResetCurrentScore();
     }
