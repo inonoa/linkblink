@@ -4,11 +4,11 @@
         _MainTex("Main Texture", 2D) = "gray" {}
         _Color("Color", Color) = (1,1,1,1)
         _ShadowColor("Shadow Color", Color) = (0,0,1,1)
-        [HDR] _EmissionColor("Emission Color", Color) = (1,1,1,1)
+        _EmissionColor("Emission Color", Color) = (1,1,1,1)
 
         _Color2("Color 2", Color) = (0,0,0,0)
         _ShadowColor2("Shadow Color 2", Color) = (0,0,0,0)
-        [HDR] _EmissionColor2("Emission Color 2", Color) = (0,0,0,0)
+        _EmissionColor2("Emission Color 2", Color) = (0,0,0,0)
 
         _Emit( "Emission Rate", Float) = 1
         _Alpha("Alpha", Range(0, 1)) = 1
@@ -134,7 +134,7 @@
                 col.a = _Alpha;
             }
 
-            return col;
+            return saturate(col);
         }
 
         ENDCG

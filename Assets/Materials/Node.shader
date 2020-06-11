@@ -5,11 +5,11 @@
 
         _Color("Color", Color) = (1,1,1,1)
         _ShadowColor("Shadow Color", Color) = (0,0,1,1)
-        [HDR] _EmissionColor("Emission Color", Color) = (1,1,1,1)
+        _EmissionColor("Emission Color", Color) = (1,1,1,1)
 
         _Color2("Color 2", Color) = (0,0,0,0)
         _ShadowColor2("Shadow Color 2", Color) = (0,0,0,0)
-        [HDR] _EmissionColor2("Emission Color 2", Color) = (0,0,0,0)
+        _EmissionColor2("Emission Color 2", Color) = (0,0,0,0)
 
         _Emit( "Emission Rate", Float) = 1
     }
@@ -27,6 +27,7 @@
 
         #pragma vertex vert
         #pragma fragment frag
+        #pragma prefer_hlsl2glsl gles
 
         #include "UnityCG.cginc"
         #include "rgb2hsv.cginc"
@@ -102,17 +103,18 @@
 
             fixed4 actualColor;
             {
-                fixed4 col1hsv = fixed4(rgb2hsv(_Color.rgb), 1);
-                fixed4 col2hsv = fixed4(rgb2hsv(_Color2.rgb), 1);
-                fixed4 shad1hsv = fixed4(rgb2hsv(_ShadowColor.rgb), 1);
-                fixed4 shad2hsv = fixed4(rgb2hsv(_ShadowColor2.rgb), 1);
 
-                fixed4 actualHSV1 = lerp(col1hsv, shad1hsv, 1 - dif);
-                fixed4 actualHSV2 = lerp(col2hsv, shad2hsv, 1 - dif);
+                fixed3 col1hsv = rgb2hsv(_Color.rgb);
+                fixed3 col2hsv = rgb2hsv(_Color2.rgb);
+                fixed3 shad1hsv = rgb2hsv(_ShadowColor.rgb);
+                fixed3 shad2hsv = rgb2hsv(_ShadowColor2.rgb);
 
-                fixed4 actualHSV = ((_Color2.a == 0) ? actualHSV1 : lerp(actualHSV1, actualHSV2, yama((i.uv.x + i.uv.y + _Time.z) % 2)));
+                fixed3 actualHSV1 = lerp(col1hsv, shad1hsv, 1 - dif);
+                fixed3 actualHSV2 = lerp(col2hsv, shad2hsv, 1 - dif);
 
-                fixed3 actualRGB = hsv2rgb(actualHSV.xyz);
+                fixed3 actualHSV = ((_Color2.a == 0) ? actualHSV1 : lerp(actualHSV1, actualHSV2, yama(fmod(i.uv.x + i.uv.y + _Time.z, 2))));
+
+                fixed3 actualRGB = hsv2rgb(saturate(actualHSV));
 
                 //ブラウン管風にする
                 float vppX3 = floor(i.viewportPos.x / i.viewportPos.w * 500 % 3);
@@ -125,7 +127,7 @@
 
             fixed4 actualEmission;
             {
-                actualEmission = (_Color2.a == 0) ? _EmissionColor : lerp(_EmissionColor, _EmissionColor2, yama((i.uv.x + i.uv.y + _Time.z) % 2));
+                actualEmission = (_Color2.a == 0) ? _EmissionColor : lerp(_EmissionColor, _EmissionColor2, yama(fmod(i.uv.x + i.uv.y + _Time.z, 2)));
                 actualEmission *= _Emit;
             }
 
@@ -135,7 +137,7 @@
                 texCol = tex2D(_MainTex, texUV);
             }
 
-            return actualColor + actualEmission + texCol - fixed4(0.5,0.5,0.5,0);
+            return saturate(actualColor + actualEmission + texCol - fixed4(0.5,0.5,0.5,0));
         }
 
         ENDCG
