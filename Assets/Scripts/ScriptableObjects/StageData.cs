@@ -19,23 +19,29 @@ public class StageData : ScriptableObject{
     [SerializeField] [ListDrawerSettings( Expanded = true )] NodeRow[] _Rows;
     public IReadOnlyList<NodeRow> Rows => _Rows;
 
-    [SerializeField] NodeType[,] nodesTest;
-    [SerializeField] NodeType[][] nodesTest2;
-
-    [Button]
-    void GoToNormal(){
+    [Button][ExecuteInEditMode]
+    public void GoToNormal(){
         if(!GameData.Instance.Normal.Stages.Contains(this)) GameData.Instance.Normal.Add(this);
     }
-    [Button]
-    void GoToHard(){
+    [Button][ExecuteInEditMode]
+    public void GoToHard(){
         if(!GameData.Instance.Hard.Stages.Contains(this)) GameData.Instance.Hard.Add(this);
     }
-    [Button]
-    void CopyArray(StageData src){
+    [Button][ExecuteInEditMode]
+    public void CopyArray(StageData src){
         _Rows = new NodeRow[src.Rows.Count];
         for(int i = 0; i < src.Rows.Count; i++){
             _Rows[i] = new NodeRow();
             _Rows[i].CopyFrom(src.Rows[i]);
+        }
+    }
+    [Button][ExecuteInEditMode]
+    public void CreateGrid(int rows, int columns, NodeType type){
+        _Rows = new NodeRow[rows];
+        for(int i = 0; i < rows; i++){
+            _Rows[i] = new NodeRow(
+                Enumerable.Repeat<NodeType>(type, columns).ToArray()
+            );
         }
     }
 }
@@ -48,8 +54,14 @@ public class NodeRow{
         this._Nodes = src.Nodes.Select(nd => nd).ToArray();
     }
 
-    [Button]
-    void Fill(NodeType type){
+    [ExecuteInEditMode]
+    public NodeRow(NodeType[] arr){
+        _Nodes = arr;
+    }
+    public NodeRow(){}
+
+    [Button] [ExecuteInEditMode]
+    public void Fill(NodeType type){
         for(int i = 0; i < Nodes.Count; i++){
             _Nodes[i] = type;
         }
