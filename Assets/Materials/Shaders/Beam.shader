@@ -83,9 +83,6 @@
                     actualColor.a = _Alpha;
                 }
 
-                // float tmp = updown(i.uv.x);
-                // return fixed4(tmp, tmp, tmp, 1);
-
                 return col * (actualColor + _EmitColor * _Emit);
             }
             ENDCG

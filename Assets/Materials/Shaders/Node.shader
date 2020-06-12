@@ -112,7 +112,12 @@
                 fixed3 actualHSV1 = lerp(col1hsv, shad1hsv, 1 - dif);
                 fixed3 actualHSV2 = lerp(col2hsv, shad2hsv, 1 - dif);
 
-                fixed3 actualHSV = ((_Color2.a == 0) ? actualHSV1 : lerp(actualHSV1, actualHSV2, yama(fmod(i.uv.x + i.uv.y + _Time.y, 2))));
+                actualHSV1.x = (actualHSV2.x - actualHSV1.x > 0.5) ? actualHSV1.x + 1 : actualHSV1.x;
+                actualHSV2.x = (actualHSV1.x - actualHSV2.x > 0.5) ? actualHSV2.x + 1 : actualHSV2.x;
+
+                fixed3 actualHSV = ((_Color2.a == 0) ? actualHSV1 % 1 : 
+                    (lerp(actualHSV1, actualHSV2, yama(fmod(i.uv.x + i.uv.y + _Time.y, 2))) % 1
+                ));
 
                 fixed3 actualRGB = hsv2rgb(saturate(actualHSV));
 
@@ -127,7 +132,7 @@
 
             fixed4 actualEmission;
             {
-                actualEmission = (_Color2.a == 0) ? _EmissionColor : lerp(_EmissionColor, _EmissionColor2, yama(fmod(i.uv.x + i.uv.y + _Time.y, 2)));
+                actualEmission = ((_Color2.a == 0) ? _EmissionColor : lerp(_EmissionColor, _EmissionColor2, yama(fmod(i.uv.x + i.uv.y + _Time.y, 2))));
                 actualEmission *= _Emit;
             }
 
