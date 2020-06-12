@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum NodeType{
-    None, Cyan, Magenta, Yellow, Green, CyanMagenta, Black, AllColor,
+    None, Cyan, Magenta, Yellow, Green, CyanMagenta, Black, AllColor, CyanYellow, CyanGreen, MagentaYellow, MagentaGreen, YellowGreen
 }
 
 public enum NodeColor{
     Cyan, Magenta, Yellow, Green
 }
 
-public static class Color2TypeExtension{
+public static class ColorTypeExtension{
 
     public static NodeType ToType(this NodeColor color){
         switch(color){
@@ -31,10 +31,25 @@ public static class Color2TypeExtension{
             case NodeType.Green:   return new NodeColor[]{ NodeColor.Green };
 
             case NodeType.CyanMagenta: return new NodeColor[]{ NodeColor.Cyan, NodeColor.Magenta };
+            case NodeType.CyanYellow:  return new NodeColor[]{ NodeColor.Cyan, NodeColor.Yellow };
+            case NodeType.CyanGreen:   return new NodeColor[]{ NodeColor.Cyan, NodeColor.Green };
+            case NodeType.MagentaYellow: return new NodeColor[]{ NodeColor.Magenta, NodeColor.Yellow };
+            case NodeType.MagentaGreen:  return new NodeColor[]{ NodeColor.Magenta, NodeColor.Green };
+            case NodeType.YellowGreen: return new NodeColor[]{ NodeColor.Yellow, NodeColor.Green };
+
             case NodeType.Black: return new NodeColor[]{};
             case NodeType.AllColor: return Enum.GetValues(typeof(NodeColor)) as NodeColor[];
 
             default: return new NodeColor[]{};
         }
+    }
+
+    public static bool HasTwoColors(this NodeType type){
+        return    type == NodeType.CyanMagenta
+               || type == NodeType.CyanYellow
+               || type == NodeType.CyanGreen
+               || type == NodeType.MagentaYellow
+               || type == NodeType.MagentaGreen
+               || type == NodeType.YellowGreen;
     }
 }

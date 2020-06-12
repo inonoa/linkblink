@@ -71,7 +71,7 @@ public class StageWatcher : MonoBehaviour
                 
                 NodeType type = stage.Rows[i].Nodes[j];
                 if(type != NodeType.None){
-                    NodeMover node = Instantiate(NodePrefabContainer.Instance[type], row);
+                    NodeMover node = Instantiate(TypeDataHolder.Instance[type].Prefab, row);
                     node.transform.position += new Vector3((-stage.Rows[i].Nodes.Count / 2f + 0.5f + j) * board.NodeDistanceUnit.x, 0, 0);
                 }
             }

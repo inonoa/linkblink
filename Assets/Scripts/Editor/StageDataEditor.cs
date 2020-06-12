@@ -58,6 +58,7 @@ public class StageDataEditor : Editor
                     rows.InsertArrayElementAtIndex(0);
                 }
 
+
                 for(int i = 0; i < rows.arraySize; i++){
                     var row = rows.GetArrayElementAtIndex(i).FindPropertyRelative("_Nodes");
 
@@ -67,8 +68,8 @@ public class StageDataEditor : Editor
 
                             var node = row.GetArrayElementAtIndex(j);
                             NodeType type = (NodeType) node.enumValueIndex;
-                            GUI.color = Palette.Instance.Find(type).EditorColor;
-                            node.enumValueIndex = (int) (NodeType) EditorGUILayout.EnumPopup(type, GUILayout.Height(50));
+                            GUI.color = TypeDataHolder.Instance[type].EditorColor;
+                            node.enumValueIndex = (int) (NodeType) EditorGUILayout.EnumPopup(type, GUILayout.MinWidth(30), GUILayout.Height(30));
                             //EditorGUILayout.EnumFlagsField((NodeType) row.GetArrayElementAtIndex(j).enumValueIndex);
                         }
                         GUI.color = defaultColor;

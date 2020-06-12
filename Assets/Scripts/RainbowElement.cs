@@ -8,7 +8,7 @@ using System.Linq;
 public class RainbowElement : NewElement
 {
     protected override bool ExistIn(StageData data){
-        return data.Rows.Any(row => row.Nodes.Any(node => node == NodeType.CyanMagenta));
+        return data.Rows.Any(row => row.Nodes.Any(node => node.HasTwoColors()));
     }
 
     public RainbowElement(){

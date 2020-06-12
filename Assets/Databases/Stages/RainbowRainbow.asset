@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a47b3f0f7b9c3a49b3f72bfc43919d8, type: 3}
+  m_Name: RainbowRainbow
+  m_EditorClassIdentifier: 
+  memo: 
+  difficulty: 0
+  _DistanceUnit: {x: 0, y: 0}
+  _Rows:
+  - _Nodes: 0000000001000000000000000400000000000000
+  - _Nodes: 020000000c0000000a0000000500000003000000
+  - _Nodes: 0000000009000000000000000900000000000000
+  - _Nodes: 03000000050000000a0000000c00000002000000
+  - _Nodes: 0000000004000000000000000100000000000000

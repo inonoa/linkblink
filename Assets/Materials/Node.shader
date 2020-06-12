@@ -34,7 +34,7 @@
         
 
         float yama(float zero2two){
-            return saturate(zero2two < 1 ? (zero2two * 2 - 1/2) : (7/2 - 2 * zero2two));
+            return saturate(zero2two < 1 ? (zero2two * 4 - 3/2) : (13/2 - 4 * zero2two));
         }
 
         sampler2D _MainTex;
