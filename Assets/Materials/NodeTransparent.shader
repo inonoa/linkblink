@@ -111,14 +111,14 @@
                 fixed4 actualHSV1 = lerp(col1hsv, shad1hsv, 1 - dif);
                 fixed4 actualHSV2 = lerp(col2hsv, shad2hsv, 1 - dif);
 
-                fixed4 actualHSV = ((_Color2.a == 0) ? actualHSV1 : lerp(actualHSV1, actualHSV2, yama((i.uv.x + i.uv.y + _Time.z) % 2)));
+                fixed4 actualHSV = ((_Color2.a == 0) ? actualHSV1 : lerp(actualHSV1, actualHSV2, yama((i.uv.x + i.uv.y + _Time.y) % 2)));
 
                 actualColor = fixed4(hsv2rgb(actualHSV), 1);
             }
 
             fixed4 actualEmission;
             {
-                actualEmission = (_Color2.a == 0) ? _EmissionColor : lerp(_EmissionColor, _EmissionColor2, yama((i.uv.x + i.uv.y + _Time.z) % 2));
+                actualEmission = (_Color2.a == 0) ? _EmissionColor : lerp(_EmissionColor, _EmissionColor2, yama((i.uv.x + i.uv.y + _Time.y) % 2));
                 actualEmission *= _Emit;
             }
 

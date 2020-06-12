@@ -1,22 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3041203630626849813
+--- !u!1001 &7352214212020188978
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2207633172127509767, guid: c5313c41d55f1964c81895a277215746,
-        type: 3}
-      propertyPath: _Colors.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2207633172127509767, guid: c5313c41d55f1964c81895a277215746,
-        type: 3}
-      propertyPath: _Colors.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2207633172127509767, guid: c5313c41d55f1964c81895a277215746,
         type: 3}
       propertyPath: _Type
@@ -80,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 2207633172127509896, guid: c5313c41d55f1964c81895a277215746,
         type: 3}
       propertyPath: m_Name
-      value: NodeCyanMagenta
+      value: RainbowBase Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2207633172127510013, guid: c5313c41d55f1964c81895a277215746,
         type: 3}
