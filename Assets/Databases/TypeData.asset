@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Data:
   - _Type: 0
-    <Prefab>k__BackingField: {fileID: 2207633172127509767, guid: c5313c41d55f1964c81895a277215746,
-      type: 3}
+    <Prefab>k__BackingField: {fileID: 0}
     <EditorColor>k__BackingField: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
@@ -49,39 +48,43 @@ MonoBehaviour:
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - _Type: 5
-    <Prefab>k__BackingField: {fileID: 3789656193025386770, guid: 251d0e27ee9773a44963345b1a4a75ea,
+    <Prefab>k__BackingField: {fileID: 4985672679352648586, guid: 251d0e27ee9773a44963345b1a4a75ea,
       type: 3}
     <EditorColor>k__BackingField: {r: 0.7700736, g: 0.3160377, b: 1, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - _Type: 8
-    <Prefab>k__BackingField: {fileID: 8969774236191825711, guid: cef286a236da24543aed163d209d19f9,
+    <Prefab>k__BackingField: {fileID: 8635715038427921371, guid: cef286a236da24543aed163d209d19f9,
       type: 3}
     <EditorColor>k__BackingField: {r: 0.45612317, g: 0.7735849, b: 0.47353053, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - _Type: 9
-    <Prefab>k__BackingField: {fileID: 0}
+    <Prefab>k__BackingField: {fileID: 6231865109812699543, guid: 2b5f3848b9efcd948a1c662096c1a7ba,
+      type: 3}
     <EditorColor>k__BackingField: {r: 0.4542987, g: 0.7830189, b: 0.6367444, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - _Type: 10
-    <Prefab>k__BackingField: {fileID: 0}
+    <Prefab>k__BackingField: {fileID: 1219118475520598600, guid: f44b6af8a7b61f34d9a79cb9f0f0e1f5,
+      type: 3}
     <EditorColor>k__BackingField: {r: 1, g: 0.6824282, b: 0.5613208, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - _Type: 11
-    <Prefab>k__BackingField: {fileID: 0}
+    <Prefab>k__BackingField: {fileID: 5882472816770471104, guid: e18af986a53be6b4684369f3452619f6,
+      type: 3}
     <EditorColor>k__BackingField: {r: 0.7830189, g: 0.66647303, b: 0.41736382, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - _Type: 12
-    <Prefab>k__BackingField: {fileID: 0}
+    <Prefab>k__BackingField: {fileID: 8276067466235144536, guid: 318e85307fed0ab4c869a22246a8dafd,
+      type: 3}
     <EditorColor>k__BackingField: {r: 0.8487269, g: 0.9056604, b: 0.5767177, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
