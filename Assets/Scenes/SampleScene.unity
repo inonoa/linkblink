@@ -18166,8 +18166,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sequenceNodesParent: {fileID: 1438079702}
-  nodePrefab: {fileID: 2207633172127509767, guid: c5313c41d55f1964c81895a277215746,
+  nodePrefab: {fileID: 968491481337828063, guid: d3618cf683c5daa47b08ba045a934ca0,
     type: 3}
+  stageUIsHolder: {fileID: 1861770876}
+  stageWatcher: {fileID: 1933308820}
 --- !u!225 &787090905
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "Game", menuName = "ScriptableObjects/GameData", order = 3)]
 public class GameData : ScriptableObject{
@@ -19,4 +20,6 @@ public class GameData : ScriptableObject{
     static public GameData Instance{ get; private set; }
 
     #endregion
+
+    [ExecuteInEditMode] public void Add(SequenceData sequence) => _Sequences = _Sequences.Append(sequence).ToArray();
 }
