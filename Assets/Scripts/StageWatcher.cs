@@ -43,6 +43,7 @@ public class StageWatcher : MonoBehaviour
         if(AcceptsInput && Input.GetKeyDown(KeyCode.Z)){
             ResetStage();
         }
+        //ここゲーム外でも発生して例外吐く
         if(AcceptsInput && Input.GetMouseButtonDown(1)){
             currentBoard.CancelSelect();
         }
