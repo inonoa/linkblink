@@ -20,9 +20,6 @@ public class SequenceData : ScriptableObject
     [SerializeField] StageData[] _Stages;
     [SerializeField] int[] _InitialScores;
     public IReadOnlyList<int> InitialScores => _InitialScores;
-
-    [field: SerializeField] [field: LabelText("Texture for Sequence Select Node")]
-    public Texture SequenceSelectNodeTexture{ get; private set; }
     
 
     public void Add(StageData stage){
