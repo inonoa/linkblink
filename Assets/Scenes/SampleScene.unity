@@ -22307,6 +22307,7 @@ MonoBehaviour:
   - {fileID: 1735079696}
   - {fileID: 1005258935}
   sequenceSelectScene: {fileID: 787090904}
+  bestScoreText: {fileID: 1760392338}
   rankingViewManager: {fileID: 1475006846}
 --- !u!1 &1110747813
 GameObject:
