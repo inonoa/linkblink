@@ -16,12 +16,21 @@ public class SequenceSelectScene : MonoBehaviour
 
     List<NodeMover> nodes = new List<NodeMover>();
 
-    public void Init(IReadOnlyList<Sequence> sequences){
+    IReadOnlyList<Sequence> sequences;
 
+    public void Init(IReadOnlyList<Sequence> sequences){
+        this.sequences = sequences;
+
+        ReStart();
+    }
+
+    public void ReStart(){
         gameObject.SetActive(true);
         CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0;
         canvasGroup.DOFade(1, 0.5f);
+        
+        sequenceNodesParent.Children.Clear();
 
         foreach(Sequence seq in sequences){
             NodeMover node = Instantiate(nodePrefab);

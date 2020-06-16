@@ -52,7 +52,7 @@ public class SequenceEnterManager : MonoBehaviour
     }
 
     public void OnReturnButtonPushed(){
-        //sequenceSelectScene.ReStart()みたいなのしたいね…
+        sequenceSelectScene.ReStart();
         FadeOut();
     }
 }
