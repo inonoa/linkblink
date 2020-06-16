@@ -18,6 +18,9 @@ public class SequenceSelectScene : MonoBehaviour
 
     IReadOnlyList<Sequence> sequences;
 
+
+    List<Tween> tweens = new List<Tween>();
+
     public void Init(IReadOnlyList<Sequence> sequences){
         this.sequences = sequences;
 
@@ -25,10 +28,13 @@ public class SequenceSelectScene : MonoBehaviour
     }
 
     public void ReStart(){
+        tweens.ForEach(tw => tw.Kill());
+        tweens.Clear();
+
         gameObject.SetActive(true);
         CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0;
-        canvasGroup.DOFade(1, 0.5f);
+        tweens.Add(canvasGroup.DOFade(1, 0.5f));
         
         sequenceNodesParent.Children.Clear();
 
@@ -45,15 +51,17 @@ public class SequenceSelectScene : MonoBehaviour
         nodes.ForEach(node => node.Vanish());
         nodes.Clear();
 
-        GetComponent<CanvasGroup>().DOFade(0, 0.5f);
-        DOVirtual.DelayedCall(1f, () => gameObject.SetActive(false));
+        tweens.Add(GetComponent<CanvasGroup>().DOFade(0, 0.5f));
+        tweens.Add(DOVirtual.DelayedCall(1f, () => gameObject.SetActive(false)));
         
-        DOVirtual.DelayedCall(0.5f, () => {
-            stageUIsHolder.ForEach(group => {
-                group.gameObject.SetActive(true);
-                group.DOFade(1, 0.5f);
-            });
-        });
+        tweens.Add(
+            DOVirtual.DelayedCall(0.5f, () => {
+                stageUIsHolder.ForEach(group => {
+                    group.gameObject.SetActive(true);
+                    tweens.Add(group.DOFade(1, 0.5f));
+                });
+            })
+        );
 
         //stageWatcher.Init(sequence);
         sequenceEnterManager.Init(sequence);
