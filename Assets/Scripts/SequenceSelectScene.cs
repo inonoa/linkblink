@@ -11,6 +11,7 @@ public class SequenceSelectScene : MonoBehaviour
     [SerializeField] NodeMover nodePrefab;
     [SerializeField] StageUIsHolder stageUIsHolder;
     [SerializeField] StageWatcher stageWatcher;
+    [SerializeField] SequenceEnterManager sequenceEnterManager;
     [SerializeField] TextTextureRenderer tTRenderer;
 
     List<NodeMover> nodes = new List<NodeMover>();
@@ -45,6 +46,7 @@ public class SequenceSelectScene : MonoBehaviour
             });
         });
 
-        stageWatcher.Init(sequence);
+        //stageWatcher.Init(sequence);
+        sequenceEnterManager.Init(sequence);
     }
 }

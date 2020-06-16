@@ -23,7 +23,7 @@ public class TitleManager : MonoBehaviour
         });
 
         game = new Game(GameData.Instance);
-        sequenceSelectManager.InitSequences(game.Sequences[0], game.Sequences[1]);
+        //sequenceSelectManager.InitSequences(game.Sequences[0], game.Sequences[1]);
     }
 
     public void Init(){
@@ -48,8 +48,8 @@ public class TitleManager : MonoBehaviour
         }
 
         DOVirtual.DelayedCall(0.5f, () => {
-            sequenceSelectManager.Init();
-            //sequenceSelectScene.Init(game.Sequences);
+            //sequenceSelectManager.Init();
+            sequenceSelectScene.Init(game.Sequences);
         });
     }
 }
