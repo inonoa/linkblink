@@ -4,69 +4,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using Sirenix.OdinInspector;
 
 public class RankingViewManager : MonoBehaviour
 {
     [SerializeField] Transform scrollViewContent;
     [SerializeField] RankDataInjector rankNodePrefab;
-    [SerializeField] InputField nameInputField;
-    [SerializeField] Button sendButton;
-    [SerializeField] Text scoreText;
     [SerializeField] Text onlineBestScoreText;
 
     CanvasGroup canvasGroup;
 
-    PlayfabAccesssor accesssor;
-    [SerializeField][ReadOnly] bool scoreSent = false;
-    [SerializeField][ReadOnly] bool bestScore = true;
-    int score2send;
-    string sequenceName;
-    RankData myData;
+    List<RankData> datas = new List<RankData>();
+    bool dataLoaded = false;
 
-    SortedList<RankData, object> datas = new SortedList<RankData, object>();
-
-    void Start()
-    {
-
-    }
-
-    public void NewScore(){
-        scoreSent = false;
-        bestScore = true;
-    }
-
-    public void Init(string sequenceName, int score){
-        this.sequenceName = sequenceName;
-        score2send = score;
+    public void LoadRanking(string sequenceName, int bestScore){
+        dataLoaded = false;
 
         foreach(Transform elm in scrollViewContent){
             Destroy(elm.gameObject);
         }
-        datas.Clear();
 
-        if(accesssor == null) accesssor = PlayfabAccesssor.Instance;
-        accesssor.RequestGetRanking(sequenceName, ranking => {
+        datas.Clear();
+        PlayfabAccesssor.Instance.RequestGetRanking(sequenceName, ranking => {
             ranking.ForEach(data => {
                 var rData = new RankData(data.DisplayName ?? "", data.StatValue);
-                datas.Add(rData, null);
-                if(data.PlayFabId == accesssor.ID){
-                    myData = rData;
-                    onlineBestScoreText.text = data.StatValue.ToString();
-                    if(score2send <= data.StatValue) bestScore = false;
-                }
+                datas.Add(rData);
             });
-            DrawRanking();
-            canvasGroup.DOFade(1, 0.5f);
-            transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutQuint);
+            dataLoaded = true;
         });
+
+        onlineBestScoreText.text = bestScore.ToString();
+    }
+
+    void DrawRanking(){
+        int index = 0;
+        int rank = 1;
+        RankData last = null;
+        for(int i = 0; i < datas.Count; i++){
+            if(last == null || datas[i].score < last.score) rank = index + 1;
+            Instantiate(rankNodePrefab, scrollViewContent).Init(rank, datas[i]);
+
+            last = datas[i];
+            index ++;
+        }
+    }
+
+    public void Show(){
 
         gameObject.SetActive(true);
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0;
         transform.localPosition = new Vector3(0, -100, 0);
 
-        scoreText.text = score.ToString();
+        StartCoroutine(ShowCoroutine());
+
+        IEnumerator ShowCoroutine(){
+
+            yield return new WaitUntil(() => dataLoaded);
+
+            DrawRanking();
+            canvasGroup.DOFade(1, 0.5f);
+            transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutQuint);
+        }
     }
 
     public void OnCancelButtonClick(){
@@ -78,47 +76,10 @@ public class RankingViewManager : MonoBehaviour
         transform.DOLocalMoveY(-100, 0.5f).SetEase(Ease.InQuint);
         DOVirtual.DelayedCall(0.5f, () => gameObject.SetActive(false));
     }
-    
 
-    void DrawRanking(){
-        int index = 0;
-        int rank = 1;
-        RankData last = null;
-        for(int i = datas.Count - 1; i > -1; i--){
-            if(last == null || datas.Keys[i].score < last.score) rank = index + 1;
-            Instantiate(rankNodePrefab, scrollViewContent).Init(rank, datas.Keys[i]);
 
-            last = datas.Keys[i];
-            index ++;
-        }
-    }
-    public void OnSendButtonClick(){
-        scoreSent = true;
-
-        string name = nameInputField.text;
-        AddData(new RankData(name, score2send));
-    }
-
-    void AddData(RankData addedData){
-
-        if(myData != null){
-            datas.Remove(myData);
-        }
-        myData = addedData;
-        datas.Add(addedData, null);
-        accesssor
-            .RequestSetDisplayName(addedData.name)
-            .RequestSendScoreToRanking(addedData.score, sequenceName);
-
-        foreach(Transform elm in scrollViewContent){
-            Destroy(elm.gameObject);
-        }
-
-        DrawRanking();
-    }
-
-    void Update(){
-        nameInputField.interactable = !scoreSent && bestScore;
-        sendButton.interactable = (nameInputField.text.Length > 2 && nameInputField.text.Length < 26 && !scoreSent && bestScore);
+    void Start()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 }

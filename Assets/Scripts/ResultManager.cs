@@ -12,7 +12,7 @@ public class ResultManager : MonoBehaviour
     [SerializeField] Image nextButtonImage;
     [SerializeField] RecordUI[] stageScoreUIs;
     [SerializeField] SequenceSelectManager sequenceSelectManager;
-    [SerializeField] RankingViewManager rankingViewManager;
+    [SerializeField] RankingWritableViewManager rankingViewManager;
     [SerializeField] Tweeter tweeter;
     [SerializeField] SoundAndVolume awakeSound;
 

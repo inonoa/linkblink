@@ -11,6 +11,7 @@ public class SequenceEnterManager : MonoBehaviour
     [SerializeField] Text sequenceNameText;
     [SerializeField] StageScoreWithButton[] stagesUIs;
     [SerializeField] SequenceSelectScene sequenceSelectScene;
+    [SerializeField] RankingViewManager rankingViewManager;
 
     CanvasGroup canvasGroup;
 
@@ -30,6 +31,8 @@ public class SequenceEnterManager : MonoBehaviour
             stagesUIs[i].PlayButton.onClick.AddListener(() => OnStagePlayButtonPushed(seq.Stages[i_]));
         }
         sequenceNameText.text = seq.Data.Name;
+
+        rankingViewManager.LoadRanking(seq.Data.Name, seq.Scores.BestScoreSum);
     }
 
     public void OnPlayButtonPushed(){
@@ -48,7 +51,7 @@ public class SequenceEnterManager : MonoBehaviour
     }
 
     public void OnRankingButtonPushed(){
-        //
+        rankingViewManager.Show();
     }
 
     public void OnReturnButtonPushed(){
