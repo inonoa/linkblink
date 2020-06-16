@@ -10,19 +10,27 @@ public class StageWatcher : MonoBehaviour
 {
     //なんかおかしくね？
     [SerializeField] ScoreManager scoreManager;
+
     Sequence currentSequence;
+    public int CurrentStageIndex{ get; private set; }
+    Stage _CurrentStage;
+    Stage CurrentStage{
+        get{
+            if(PlayMode == EPlayMode.Sequence) return currentSequence.Stages[CurrentStageIndex];
+            else                              return _CurrentStage;
+        }
+    }
+
     [SerializeField] ResultManager resultManager;
     [SerializeField] StageUIsHolder stageUIsHolder;
     [SerializeField] Button resetButton;
     [SerializeField] Button cancelButton;
     BoardManager currentBoard;
     [SerializeField] BoardManager boardPrefab;
-    [SerializeField] GameObject rowPrefab;    
+    [SerializeField] GameObject rowPrefab;
 
-    [SerializeField] [ReadOnly] StageData currentStageData;
-
-    enum PlayMode{ Sequence, SingleStage }
-    PlayMode playMode = PlayMode.Sequence;
+    public enum EPlayMode{ Sequence, SingleStage }
+    public EPlayMode PlayMode{ get; private set; } = EPlayMode.Sequence;
 
     bool _AcceptsInput = true;
     bool AcceptsInput{
@@ -51,8 +59,7 @@ public class StageWatcher : MonoBehaviour
         }
     }
 
-    BoardManager LoadBoard(int stageIndex){
-        StageData stage = currentSequence.Data.Stages[stageIndex]; currentStageData = stage;
+    BoardManager LoadBoard(StageData stage){
 
         BoardManager board = Instantiate(boardPrefab);
         if(stage.DistanceUnit == Vector2.zero){
@@ -103,29 +110,32 @@ public class StageWatcher : MonoBehaviour
     }
 
     public void Init(Sequence seq){
-        playMode = PlayMode.Sequence;
+        PlayMode = EPlayMode.Sequence;
         currentSequence = seq;
-
-        StartStage();
+        CurrentStageIndex = 0;
+        StartStage(seq.Stages[DebugParameters.Instance.StartStage]);
     }
 
-    void StartStage(){
+    public void Init(Stage stage){
+        PlayMode = EPlayMode.SingleStage;
+        _CurrentStage = stage;
+        StartStage(stage);
+    }
+
+    void StartStage(Stage stage){
         AcceptsInput = true;
 
-        int index = StageCounter.StageNow;
-        if(index < currentSequence.Data.Stages.Count){
-            currentBoard = LoadBoard(StageCounter.StageNow);
-            currentBoard.AllNodeVanished += (s, e) => {
-                AcceptsInput = false;
-                LoadNextStage();
-            };
-        }
+        currentBoard = LoadBoard(stage.data);
+        currentBoard.AllNodeVanished += (s, e) => {
+            AcceptsInput = false;
+            LoadNextStage();
+        };
         scoreManager.ResetCurrentScore();
     }
 
     void ResetStage(){
         currentBoard.KillAll();
-        StartStage();
+        StartStage(CurrentStage);
     }
 
     void LoadNextStage(){
@@ -136,19 +146,38 @@ public class StageWatcher : MonoBehaviour
 
             Destroy(currentBoard.gameObject);
 
-            currentSequence.Scores.RegisterScore(StageCounter.StageNow, scoreManager.Score);
+            if(PlayMode == EPlayMode.Sequence){
+                currentSequence.Scores.RegisterScore(CurrentStageIndex, scoreManager.Score);
+                if(CurrentStageIndex == currentSequence.Data.Stages.Count - 1){
+                    FinishSequence();
+                    yield break;
+                }
+                CurrentStageIndex ++;
 
-            if(StageCounter.StageNow == currentSequence.Data.Stages.Count - 1){
-                stageUIsHolder.ForEach(group => {
-                    group.DOFade(0, 1)
-                    .onComplete += () => group.gameObject.SetActive(false);
-                });
-                resultManager.Init(currentSequence);
+            }else if(PlayMode == EPlayMode.SingleStage){
+                CurrentStage.scoreHolder.score = scoreManager.Score;
+                FinishSingleStage();
                 yield break;
             }
 
-            StageCounter.NextStage();
-            StartStage();
+            StartStage(CurrentStage);
         }
+    }
+
+    void FinishSequence(){
+        stageUIsHolder.ForEach(group => {
+            group.DOFade(0, 1)
+            .onComplete += () => group.gameObject.SetActive(false);
+        });
+        resultManager.Init(currentSequence);
+    }
+
+    void FinishSingleStage(){
+        stageUIsHolder.ForEach(group => {
+            group.DOFade(0, 1)
+            .onComplete += () => group.gameObject.SetActive(false);
+        });
+
+        //resultManager.Init(currentStage); みたいにしたい
     }
 }

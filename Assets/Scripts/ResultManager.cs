@@ -33,10 +33,10 @@ public class ResultManager : MonoBehaviour
 
         for(int i = 0; i < sequence.Scores.Scores.Count; i++){
             StageScoreHolder stageholder = sequence.Scores.Scores[i];
-            
+
             stageScoreUIs[i].StageIndexText.text = (i+1).ToString();
-            stageScoreUIs[i].ScoreText.text = stageholder.score.ToString();
-            stageScoreUIs[i].BestScoreText.text = stageholder.bestScore.ToString();
+            stageScoreUIs[i].ScoreText.text      = stageholder.score.ToString();
+            stageScoreUIs[i].BestScoreText.text  = stageholder.bestScore.ToString();
             stageScoreUIs[i].SetIsBestScore(stageholder.score > stageholder.bestScore);
         }
 
@@ -61,7 +61,6 @@ public class ResultManager : MonoBehaviour
     public void OnNextButtonClick(){
         sequence.Scores.ApplyBestScores();
         PlayfabAccesssor.Instance.RequestSendData(sequence.Data.Name + DebugParameters.Instance.BestScoreSuffix, sequence.Scores);
-        StageCounter.Reset();
         var group = GetComponent<CanvasGroup>();
         group.DOFade(0, 1f).SetEase(Ease.OutQuint);
         DOVirtual.DelayedCall(1f, () => {

@@ -17605,7 +17605,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 511857446}
-  - component: {fileID: 511857448}
   - component: {fileID: 511857447}
   m_Layer: 0
   m_Name: CloseView
@@ -17658,21 +17657,7 @@ MonoBehaviour:
   - {fileID: 1175885013}
   - {fileID: 739515685}
   scrollSpeed: 0.1
---- !u!114 &511857448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511857445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31b8cbb17d63f2d408de4d724bb9fe3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  texs: []
-  columns: []
-  scrollSpeed: 0.2
+  stageWatcher: {fileID: 1933308820}
 --- !u!1 &530447748
 GameObject:
   m_ObjectHideFlags: 0
@@ -37920,7 +37905,6 @@ MonoBehaviour:
     type: 3}
   rowPrefab: {fileID: 6955140410547315974, guid: b0cfbe4c29f49974586be34319376fe2,
     type: 3}
-  currentStageData: {fileID: 0}
 --- !u!4 &1933308821
 Transform:
   m_ObjectHideFlags: 0
@@ -44148,10 +44132,12 @@ MonoBehaviour:
   normal:
     <Data>k__BackingField: {fileID: 0}
     _Scores:
+      _Scores: []
       _BestScoreSum: 0
   hard:
     <Data>k__BackingField: {fileID: 0}
     _Scores:
+      _Scores: []
       _BestScoreSum: 0
   stageWatcher: {fileID: 1933308820}
   stageUIsHolder: {fileID: 1861770876}

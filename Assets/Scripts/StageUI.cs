@@ -9,7 +9,7 @@ public class StageUI : MonoBehaviour
     
     void Start()
     {
-        text.text = (StageCounter.StageNow + 1).ToString();
+        //text.text = (StageCounter.StageNow + 1).ToString();
     }
 
     void Update()

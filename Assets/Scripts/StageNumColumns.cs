@@ -10,6 +10,8 @@ public class StageNumColumns : MonoBehaviour
     [SerializeField] MeshRenderer[] columns;
     [SerializeField] float scrollSpeed = 0.1f;
 
+    [SerializeField] StageWatcher stageWatcher;
+
     void Start()
     {
         StartCoroutine(Scroll());
@@ -17,8 +19,10 @@ public class StageNumColumns : MonoBehaviour
 
 
     IEnumerator Scroll(){
+        
+        int idx = (stageWatcher.PlayMode == StageWatcher.EPlayMode.Sequence) ? stageWatcher.CurrentStageIndex : 0;
         foreach(MeshRenderer clm in columns){
-            clm.material.SetTexture("_MainTex", texs[StageCounter.StageNow]);
+            clm.material.SetTexture("_MainTex", texs[ stageWatcher.CurrentStageIndex]);
         }
 
         Vector4[] tiling_offsets = columns.Select(clm => clm.material.GetVector("_MainTex_ST")).ToArray();
@@ -28,7 +32,8 @@ public class StageNumColumns : MonoBehaviour
                 tiling_offsets[i].w -= Time.deltaTime * scrollSpeed;
                 while(tiling_offsets[i].w < 0){
                     tiling_offsets[i].w += 1;
-                    columns[i].material.SetTexture("_MainTex", texs[StageCounter.StageNow]);
+                    int idx_now = (stageWatcher.PlayMode == StageWatcher.EPlayMode.Sequence) ? stageWatcher.CurrentStageIndex : 0;
+                    columns[i].material.SetTexture("_MainTex", texs[idx_now]);
                 }
                 columns[i].material.SetVector("_MainTex_ST", tiling_offsets[i]);
             }
