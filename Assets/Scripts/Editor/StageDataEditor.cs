@@ -32,10 +32,10 @@ public class StageDataEditor : Editor
             num_columns = EditorGUILayout.IntField(num_columns, GUILayout.Width(30));
 
             type2Fill = (NodeType) EditorGUILayout.EnumPopup(type2Fill, GUILayout.Width(80));
+        }
 
-            if(GUILayout.Button("グリッド生成")){
-                (target as StageData).CreateGrid(num_rows, num_columns, type2Fill);
-            }
+        if(GUILayout.Button("グリッド生成")){
+            (target as StageData).CreateGrid(num_rows, num_columns, type2Fill);
         }
 
         EditorGUILayout.Space();

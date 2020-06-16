@@ -11,6 +11,7 @@ public class SequenceSelectScene : MonoBehaviour
     [SerializeField] NodeMover nodePrefab;
     [SerializeField] StageUIsHolder stageUIsHolder;
     [SerializeField] StageWatcher stageWatcher;
+    [SerializeField] TextTextureRenderer tTRenderer;
 
     List<NodeMover> nodes = new List<NodeMover>();
 
@@ -25,7 +26,7 @@ public class SequenceSelectScene : MonoBehaviour
             NodeMover node = Instantiate(nodePrefab);
             sequenceNodesParent.Children.Add(node.transform);
             node.Clicked += (_, __) => OnSequenceSelected(seq);
-            node.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", seq.Data.SequenceSelectNodeTexture);
+            node.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", tTRenderer.Render(seq.Data.Name));
             nodes.Add(node);
         }
     }

@@ -15,6 +15,8 @@ MonoBehaviour:
   _Name: Hard
   memo: 
   _Stages:
+  - {fileID: 11400000, guid: 6b5d3d3230d17d347bb6ccbc102da108, type: 2}
+  - {fileID: 11400000, guid: 883763c03d004a048b485708cc2d98ac, type: 2}
   - {fileID: 11400000, guid: a04be5fc84d574c499d166e8e08c5b29, type: 2}
   - {fileID: 11400000, guid: 100ee98a995ae6947a3f00e6d7acb1dc, type: 2}
   - {fileID: 11400000, guid: 0340f7e9e52f1104d8991a1ef7d347e9, type: 2}
