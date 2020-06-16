@@ -17,15 +17,14 @@ public class Game
             _Sequences[i] = new Sequence(data.Sequences[i]);
         }
         PlayfabAccesssor.Instance.RequestGetData<SequenceScoreHolder>(
-            _Sequences.Select(seq => seq.Data.Name + suffix).ToArray(),
+            _Sequences.Select(seq => seq.Data.Name + DebugParameters.Instance.BestScoreSuffix).ToArray(),
             dataDict => {
                 foreach(Sequence seq in Sequences){
-                    if(dataDict.ContainsKey(seq.Data.Name + suffix)){
-                        seq.Scores.InjectBestScores(dataDict[seq.Data.Name + suffix]);
+                    if(dataDict.ContainsKey(seq.Data.Name + DebugParameters.Instance.BestScoreSuffix)){
+                        seq.Scores.InjectBestScores(dataDict[seq.Data.Name + DebugParameters.Instance.BestScoreSuffix]);
                     }
                 }
             }
         );
     }
-    const string suffix = "BestScore";
 }

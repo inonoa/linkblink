@@ -45,6 +45,6 @@ public class SequenceSelectScene : MonoBehaviour
             });
         });
 
-        stageWatcher.InitSequence(sequence);
+        stageWatcher.Init(sequence);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "DebugParameters", menuName = "ScriptableObjects/DebugParameters", order = 3)]
 public class DebugParameters : ScriptableObject
@@ -13,6 +14,10 @@ public class DebugParameters : ScriptableObject
     
     [SerializeField] LinkTriggerType _LinkTrigger = LinkTriggerType.Click;
     public LinkTriggerType LinkTrigger => _LinkTrigger;
+
+    [field: SerializeField] [field: LabelText("BestScoreSuffix")]
+    public string BestScoreSuffix{ get; private set; }
+    
 
 
     #region Singleton じゃなくね

@@ -17,10 +17,12 @@ public class StageWatcher : MonoBehaviour
     [SerializeField] Button cancelButton;
     BoardManager currentBoard;
     [SerializeField] BoardManager boardPrefab;
-    [SerializeField] GameObject rowPrefab;
-    
+    [SerializeField] GameObject rowPrefab;    
 
     [SerializeField] [ReadOnly] StageData currentStageData;
+
+    enum PlayMode{ Sequence, SingleStage }
+    PlayMode playMode = PlayMode.Sequence;
 
     bool _AcceptsInput = true;
     bool AcceptsInput{
@@ -78,6 +80,13 @@ public class StageWatcher : MonoBehaviour
             }
         }
 
+        CheckNewElements(stage);
+
+        return board;
+    }
+
+    void CheckNewElements(StageData stage){
+
         List<NewElement> elements = new List<NewElement>();
         foreach(NewElement newelm in NewElement.Elements){
             if(newelm.ExistInFirstTime(stage)){
@@ -91,17 +100,16 @@ public class StageWatcher : MonoBehaviour
                 elements[i].dialogClosed += (s, e) => tmp.Init();
             }
         }
-
-        return board;
     }
 
-    public void InitSequence(Sequence seq){
+    public void Init(Sequence seq){
+        playMode = PlayMode.Sequence;
         currentSequence = seq;
 
-        InitStage();
+        StartStage();
     }
 
-    public void InitStage(){
+    void StartStage(){
         AcceptsInput = true;
 
         int index = StageCounter.StageNow;
@@ -117,7 +125,7 @@ public class StageWatcher : MonoBehaviour
 
     void ResetStage(){
         currentBoard.KillAll();
-        InitStage();
+        StartStage();
     }
 
     void LoadNextStage(){
@@ -140,7 +148,7 @@ public class StageWatcher : MonoBehaviour
             }
 
             StageCounter.NextStage();
-            InitStage();
+            StartStage();
         }
     }
 }

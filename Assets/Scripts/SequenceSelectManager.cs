@@ -56,7 +56,7 @@ public class SequenceSelectManager : MonoBehaviour
             });
         });
 
-        stageWatcher.InitSequence(seq);
+        stageWatcher.Init(seq);
     }
 
 

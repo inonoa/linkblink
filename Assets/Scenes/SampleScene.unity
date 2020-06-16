@@ -22589,7 +22589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1090985124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34755,7 +34755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1625099797
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44149,14 +44149,10 @@ MonoBehaviour:
     <Data>k__BackingField: {fileID: 0}
     _Scores:
       _BestScoreSum: 0
-      _Scores: 
-      _BestScores: 
   hard:
     <Data>k__BackingField: {fileID: 0}
     _Scores:
       _BestScoreSum: 0
-      _Scores: 
-      _BestScores: 
   stageWatcher: {fileID: 1933308820}
   stageUIsHolder: {fileID: 1861770876}
 --- !u!225 &2078954613
