@@ -16,21 +16,20 @@ public class StageWatcher : MonoBehaviour
     Stage _CurrentStage;
     Stage CurrentStage{
         get{
-            if(PlayMode == EPlayMode.Sequence) return currentSequence.Stages[CurrentStageIndex];
+            if(PlayMode == PlayMode.Sequence) return currentSequence.Stages[CurrentStageIndex];
             else                              return _CurrentStage;
         }
     }
 
-    [SerializeField] ResultManager resultManager;
+    [SerializeField] SequenceResultManager sequenceResultManager;
+    [SerializeField] StageResultManager stageResultManager;
     [SerializeField] StageUIsHolder stageUIsHolder;
     [SerializeField] Button resetButton;
     [SerializeField] Button cancelButton;
     BoardManager currentBoard;
     [SerializeField] BoardManager boardPrefab;
     [SerializeField] GameObject rowPrefab;
-
-    public enum EPlayMode{ Sequence, SingleStage }
-    public EPlayMode PlayMode{ get; private set; } = EPlayMode.Sequence;
+    public PlayMode PlayMode{ get; private set; } = PlayMode.Sequence;
 
     bool _AcceptsInput = true;
     bool AcceptsInput{
@@ -110,14 +109,14 @@ public class StageWatcher : MonoBehaviour
     }
 
     public void Init(Sequence seq){
-        PlayMode = EPlayMode.Sequence;
+        PlayMode = PlayMode.Sequence;
         currentSequence = seq;
         CurrentStageIndex = 0;
         StartStage(seq.Stages[DebugParameters.Instance.StartStage]);
     }
 
     public void Init(Stage stage){
-        PlayMode = EPlayMode.SingleStage;
+        PlayMode = PlayMode.SingleStage;
         _CurrentStage = stage;
         StartStage(stage);
     }
@@ -146,7 +145,7 @@ public class StageWatcher : MonoBehaviour
 
             Destroy(currentBoard.gameObject);
 
-            if(PlayMode == EPlayMode.Sequence){
+            if(PlayMode == PlayMode.Sequence){
                 currentSequence.Scores.RegisterScore(CurrentStageIndex, scoreManager.Score);
                 if(CurrentStageIndex == currentSequence.Data.Stages.Count - 1){
                     FinishSequence();
@@ -154,7 +153,7 @@ public class StageWatcher : MonoBehaviour
                 }
                 CurrentStageIndex ++;
 
-            }else if(PlayMode == EPlayMode.SingleStage){
+            }else if(PlayMode == PlayMode.SingleStage){
                 CurrentStage.scoreHolder.score = scoreManager.Score;
                 FinishSingleStage();
                 yield break;
@@ -169,7 +168,7 @@ public class StageWatcher : MonoBehaviour
             group.DOFade(0, 1)
             .onComplete += () => group.gameObject.SetActive(false);
         });
-        resultManager.Init(currentSequence);
+        sequenceResultManager.Init(currentSequence);
     }
 
     void FinishSingleStage(){
@@ -178,6 +177,6 @@ public class StageWatcher : MonoBehaviour
             .onComplete += () => group.gameObject.SetActive(false);
         });
 
-        //resultManager.Init(currentStage); みたいにしたい
+        stageResultManager.Init(CurrentStage);
     }
 }

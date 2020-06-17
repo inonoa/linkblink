@@ -26,7 +26,7 @@ public class Sequence
 
         _Stages = new Stage[data.Stages.Count];
         for(int i = 0; i < _Stages.Length; i++){
-            _Stages[i] = new Stage(Data.Stages[i], _Scores.Scores[i]);
+            _Stages[i] = new Stage(Data.Stages[i], _Scores.Scores[i], data.Name + " stage " + (i+1));
         }
     }
 }

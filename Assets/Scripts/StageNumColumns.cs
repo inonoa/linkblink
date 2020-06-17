@@ -20,7 +20,7 @@ public class StageNumColumns : MonoBehaviour
 
     IEnumerator Scroll(){
         
-        int idx = (stageWatcher.PlayMode == StageWatcher.EPlayMode.Sequence) ? stageWatcher.CurrentStageIndex : 0;
+        int idx = (stageWatcher.PlayMode == PlayMode.Sequence) ? stageWatcher.CurrentStageIndex : 0;
         foreach(MeshRenderer clm in columns){
             clm.material.SetTexture("_MainTex", texs[ stageWatcher.CurrentStageIndex]);
         }
@@ -32,7 +32,7 @@ public class StageNumColumns : MonoBehaviour
                 tiling_offsets[i].w -= Time.deltaTime * scrollSpeed;
                 while(tiling_offsets[i].w < 0){
                     tiling_offsets[i].w += 1;
-                    int idx_now = (stageWatcher.PlayMode == StageWatcher.EPlayMode.Sequence) ? stageWatcher.CurrentStageIndex : 0;
+                    int idx_now = (stageWatcher.PlayMode == PlayMode.Sequence) ? stageWatcher.CurrentStageIndex : 0;
                     columns[i].material.SetTexture("_MainTex", texs[idx_now]);
                 }
                 columns[i].material.SetVector("_MainTex_ST", tiling_offsets[i]);

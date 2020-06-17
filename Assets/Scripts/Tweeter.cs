@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 public class Tweeter : MonoBehaviour
 {
 
-    [SerializeField, Tooltip("`[score]`でスコアが入るよ, `[seq]`でシーケンス名が入るよ"), Multiline(10)]
+    [SerializeField, Tooltip("`[score]`でスコアが入るよ, `[seq]`でシーケンス名が入るよ, `[stage]`でステージ名が入るよ"), Multiline(10)]
     string tweetText;
     string url;
 
@@ -15,7 +15,7 @@ public class Tweeter : MonoBehaviour
     [DllImport("__Internal")] private static extern void OpenNewWindow(string url);
 #endif
 
-    public void Tweet(int score, string sequenceName)
+    public void Tweet(int score, string sequenceName = null, string stageName = null)
     {
         string actualTweetText = 
             tweetText.Replace(
@@ -24,6 +24,9 @@ public class Tweeter : MonoBehaviour
             ).Replace(
                 "[seq]",
                 sequenceName
+            ).Replace(
+                "[stage]",
+                stageName
             );
 
         url = "https://twitter.com/intent/tweet?text=" 

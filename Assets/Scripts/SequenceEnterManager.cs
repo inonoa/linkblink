@@ -19,22 +19,27 @@ public class SequenceEnterManager : MonoBehaviour
     Sequence currentSequence;
 
     public void Init(Sequence seq){
+        currentSequence = seq;
+        Show();
+    }
+
+    public void Show(){
 
         gameObject.SetActive(true);
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0;
         canvasGroup.DOFade(1, 0.5f);
 
-        currentSequence = seq;
-        for(int i = 0; i < seq.Stages.Count; i++){
-            stagesUIs[i].Init(seq.Stages[i].scoreHolder, i);
+        for(int i = 0; i < currentSequence.Stages.Count; i++){
+            stagesUIs[i].Init(currentSequence.Stages[i].scoreHolder, i);
             int i_ = i;
-            stagesUIs[i].PlayButton.onClick.AddListener(() => OnStagePlayButtonPushed(seq.Stages[i_]));
+            stagesUIs[i].PlayButton.onClick.RemoveAllListeners();
+            stagesUIs[i].PlayButton.onClick.AddListener(() => OnStagePlayButtonPushed(currentSequence.Stages[i_]));
         }
-        sequenceNameText.text = seq.Data.Name;
-        bestScoreText.text = seq.Scores.BestScoreSum.ToString();
+        sequenceNameText.text = currentSequence.Data.Name;
+        bestScoreText.text = currentSequence.Scores.BestScoreSum.ToString();
 
-        rankingViewManager.LoadRanking(seq.Data.Name, seq.Scores.BestScoreSum);
+        rankingViewManager.LoadRanking(currentSequence.Data.Name, currentSequence.Scores.BestScoreSum);
     }
 
     public void OnPlayButtonPushed(){
