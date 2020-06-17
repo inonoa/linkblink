@@ -18090,7 +18090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2815480ca140ec04589f31792a1727ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tweetText: "Stage: [seq] \u30AF\u30EA\u30A2\uFF01\n\u30B9\u30B3\u30A2: [score]\n\n#linkblinks\nhttps://unityroom.com/games/linkblinks"
+  tweetText: "Stage: [stage] \u30AF\u30EA\u30A2\uFF01\n\u30B9\u30B3\u30A2: [score]\n\n#linkblinks\nhttps://unityroom.com/games/linkblinks"
 --- !u!82 &559605411
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20713,7 +20713,6 @@ MonoBehaviour:
   sequenceNodesParent: {fileID: 1438079702}
   nodePrefab: {fileID: 968491481337828063, guid: d3618cf683c5daa47b08ba045a934ca0,
     type: 3}
-  stageUIsHolder: {fileID: 1861770876}
   stageWatcher: {fileID: 1933308820}
   sequenceEnterManager: {fileID: 1090985128}
   tTRenderer: {fileID: 583926705}

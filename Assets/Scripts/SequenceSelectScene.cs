@@ -9,7 +9,6 @@ public class SequenceSelectScene : MonoBehaviour
 {
     [SerializeField] GridLayouter sequenceNodesParent;
     [SerializeField] NodeMover nodePrefab;
-    [SerializeField] StageUIsHolder stageUIsHolder;
     [SerializeField] StageWatcher stageWatcher;
     [SerializeField] SequenceEnterManager sequenceEnterManager;
     [SerializeField] TextTextureRenderer tTRenderer;
@@ -53,15 +52,6 @@ public class SequenceSelectScene : MonoBehaviour
 
         tweens.Add(GetComponent<CanvasGroup>().DOFade(0, 0.5f));
         tweens.Add(DOVirtual.DelayedCall(1f, () => gameObject.SetActive(false)));
-        
-        tweens.Add(
-            DOVirtual.DelayedCall(0.5f, () => {
-                stageUIsHolder.ForEach(group => {
-                    group.gameObject.SetActive(true);
-                    tweens.Add(group.DOFade(1, 0.5f));
-                });
-            })
-        );
 
         //stageWatcher.Init(sequence);
         sequenceEnterManager.Init(sequence);

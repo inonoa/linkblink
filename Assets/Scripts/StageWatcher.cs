@@ -112,12 +112,20 @@ public class StageWatcher : MonoBehaviour
         PlayMode = PlayMode.Sequence;
         currentSequence = seq;
         CurrentStageIndex = 0;
+        stageUIsHolder.ForEach(group => {
+            group.gameObject.SetActive(true);
+            group.DOFade(1, 0.5f);
+        });
         StartStage(seq.Stages[DebugParameters.Instance.StartStage]);
     }
 
     public void Init(Stage stage){
         PlayMode = PlayMode.SingleStage;
         _CurrentStage = stage;
+        stageUIsHolder.ForEach(group => {
+            group.gameObject.SetActive(true);
+            group.DOFade(1, 0.5f);
+        });
         StartStage(stage);
     }
 
