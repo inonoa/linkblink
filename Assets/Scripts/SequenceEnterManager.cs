@@ -9,10 +9,13 @@ public class SequenceEnterManager : MonoBehaviour
 {
     [SerializeField] StageWatcher stageWatcher;
     [SerializeField] Text sequenceNameText;
+    [SerializeField] Transform stagesBestsTF;
     [SerializeField] StageScoreWithButton[] stagesUIs;
     [SerializeField] SequenceSelectScene sequenceSelectScene;
     [SerializeField] Text bestScoreText;
     [SerializeField] RankingViewManager rankingViewManager;
+    [SerializeField] Transform mainTF;
+    [SerializeField] Vector3 mainPositionWhenPlayedYet;
 
     CanvasGroup canvasGroup;
 
@@ -30,12 +33,21 @@ public class SequenceEnterManager : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.DOFade(1, 0.5f);
 
-        for(int i = 0; i < currentSequence.Stages.Count; i++){
-            stagesUIs[i].Init(currentSequence.Stages[i].scoreHolder, i);
-            int i_ = i;
-            stagesUIs[i].PlayButton.onClick.RemoveAllListeners();
-            stagesUIs[i].PlayButton.onClick.AddListener(() => OnStagePlayButtonPushed(currentSequence.Stages[i_]));
+        if(currentSequence.playedYet){
+            mainTF.localPosition = mainPositionWhenPlayedYet;
+            stagesBestsTF.gameObject.SetActive(true);
+
+            for(int i = 0; i < currentSequence.Stages.Count; i++){
+                stagesUIs[i].Init(currentSequence.Stages[i].scoreHolder, i);
+                int i_ = i;
+                stagesUIs[i].PlayButton.onClick.RemoveAllListeners();
+                stagesUIs[i].PlayButton.onClick.AddListener(() => OnStagePlayButtonPushed(currentSequence.Stages[i_]));
+            }
+        }else{
+            mainTF.localPosition = new Vector3(0,0,0);
+            stagesBestsTF.gameObject.SetActive(false);
         }
+
         sequenceNameText.text = currentSequence.Data.Name;
         bestScoreText.text = currentSequence.Scores.BestScoreSum.ToString();
 

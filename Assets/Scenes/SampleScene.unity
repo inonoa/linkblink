@@ -23196,6 +23196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageWatcher: {fileID: 1933308820}
   sequenceNameText: {fileID: 2012675848}
+  stagesBestsTF: {fileID: 1323643225}
   stagesUIs:
   - {fileID: 5128489602277048635}
   - {fileID: 1457407818}
@@ -23210,6 +23211,8 @@ MonoBehaviour:
   sequenceSelectScene: {fileID: 787090904}
   bestScoreText: {fileID: 1760392338}
   rankingViewManager: {fileID: 1475006846}
+  mainTF: {fileID: 1968623458}
+  mainPositionWhenPlayedYet: {x: 230, y: 0, z: 0}
 --- !u!1 &1110747813
 GameObject:
   m_ObjectHideFlags: 0
@@ -24446,7 +24449,7 @@ GameObject:
   - component: {fileID: 1323643227}
   - component: {fileID: 1323643226}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: BestScores
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37368,7 +37371,7 @@ MonoBehaviour:
   - {fileID: 1169003043}
   - {fileID: 1928836807}
   - {fileID: 1243459141}
-  sequenceSelectManager: {fileID: 2078954612}
+  sequenceSelectScene: {fileID: 787090904}
   rankingViewManager: {fileID: 1929344424}
 --- !u!1001 &1801570866
 PrefabInstance:
@@ -44862,11 +44865,13 @@ MonoBehaviour:
     _Scores:
       _Scores: []
       _BestScoreSum: 0
+    playedYet: 0
   hard:
     <Data>k__BackingField: {fileID: 0}
     _Scores:
       _Scores: []
       _BestScoreSum: 0
+    playedYet: 0
   stageWatcher: {fileID: 1933308820}
   stageUIsHolder: {fileID: 1861770876}
 --- !u!225 &2078954613

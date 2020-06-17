@@ -22,6 +22,7 @@ public class Game
                 foreach(Sequence seq in Sequences){
                     if(dataDict.ContainsKey(seq.Data.Name + DebugParameters.Instance.BestScoreSuffix)){
                         seq.Scores.InjectBestScores(dataDict[seq.Data.Name + DebugParameters.Instance.BestScoreSuffix]);
+                        seq.playedYet = true;
                     }
                 }
             }

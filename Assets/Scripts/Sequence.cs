@@ -12,6 +12,7 @@ public class Sequence
     public SequenceData Data{ get; private set; }
     [SerializeField] SequenceScoreHolder _Scores;
     public SequenceScoreHolder Scores => _Scores;
+    public bool playedYet = false;
 
     Stage[] _Stages;
     public IReadOnlyList<Stage> Stages => _Stages;

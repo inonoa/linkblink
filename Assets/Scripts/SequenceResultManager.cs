@@ -9,7 +9,7 @@ public class SequenceResultManager : ResultManager
 {
     [SerializeField] Text sequenceNameText;
     [SerializeField] RecordUI[] stageScoreUIs;
-    [SerializeField] SequenceSelectManager sequenceSelectManager;
+    [SerializeField] SequenceSelectScene sequenceSelectScene;
     [SerializeField] RankingWritableViewManager rankingViewManager;
 
     Sequence sequence;
@@ -48,12 +48,13 @@ public class SequenceResultManager : ResultManager
     public override void OnNextButtonClick(){
 
         sequence.Scores.ApplyBestScores();
+        sequence.playedYet = true;
         PlayfabAccesssor.Instance.RequestSendData(sequence.Data.Name + DebugParameters.Instance.BestScoreSuffix, sequence.Scores);
         var group = GetComponent<CanvasGroup>();
         group.DOFade(0, 1f).SetEase(Ease.OutQuint);
         DOVirtual.DelayedCall(1f, () => {
             gameObject.SetActive(false);
-            sequenceSelectManager.Init();
+            sequenceSelectScene.ReStart();
         });
     }
 
