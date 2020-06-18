@@ -20,12 +20,8 @@ public class StageData : ScriptableObject{
     public IReadOnlyList<NodeRow> Rows => _Rows;
 
     [Button][ExecuteInEditMode]
-    public void GoToNormal(){
-        if(!GameData.Instance.Normal.Stages.Contains(this)) GameData.Instance.Normal.Add(this);
-    }
-    [Button][ExecuteInEditMode]
-    public void GoToHard(){
-        if(!GameData.Instance.Hard.Stages.Contains(this)) GameData.Instance.Hard.Add(this);
+    public void GoToTestSequence(){
+        if(!GameData.Instance.TestSequnce.Stages.Contains(this)) GameData.Instance.TestSequnce.AddToFirst(this);
     }
     [Button][ExecuteInEditMode]
     public void CopyArray(StageData src){

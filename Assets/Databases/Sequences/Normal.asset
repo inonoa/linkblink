@@ -26,5 +26,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a53a37f8dd9aa14d9882a6e60c965be, type: 2}
   - {fileID: 11400000, guid: 28e7009ea2dc67844a222ad184a3020e, type: 2}
   _InitialScores: 
-  <SequenceSelectNodeTexture>k__BackingField: {fileID: 2800000, guid: eddba59a98d4aad4cbadc205e4246cfb,
-    type: 3}

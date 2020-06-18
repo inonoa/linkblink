@@ -9,8 +9,7 @@ public class GameData : ScriptableObject{
     [SerializeField] SequenceData[] _Sequences;
     public IReadOnlyList<SequenceData> Sequences => _Sequences;
 
-    public SequenceData Normal => Sequences[0];
-    public SequenceData Hard => Sequences[1];
+    public SequenceData TestSequnce => Sequences.First(seq => seq.Name == "Test");
 
     #region Singletonではないが
     public GameData(){

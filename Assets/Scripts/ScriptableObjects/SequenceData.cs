@@ -22,8 +22,8 @@ public class SequenceData : ScriptableObject
     public IReadOnlyList<int> InitialScores => _InitialScores;
     
 
-    public void Add(StageData stage){
-        _Stages = _Stages.Append(stage).ToArray();
+    public void AddToFirst(StageData stage){
+        _Stages = new StageData[]{ stage }.Concat(_Stages).ToArray();
     }
 
     [Button]

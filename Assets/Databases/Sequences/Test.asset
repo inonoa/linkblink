@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2889efc15f287d4c90621d6e924f964, type: 3}
-  m_Name: Unique
+  m_Name: Test
   m_EditorClassIdentifier: 
-  _Name: unique
+  _Name: Test
   memo: 
-  _Stages: []
+  _Stages:
+  - {fileID: 11400000, guid: 579403f7afb7cfb4196f499f8d80ed25, type: 2}
   _InitialScores: 
-  <SequenceSelectNodeTexture>k__BackingField: {fileID: 2800000, guid: 6b0de6f3c87c06b41b3bf4d3c9504a2c,
-    type: 3}

@@ -58,6 +58,8 @@ public class StageDataEditor : Editor
                     rows.InsertArrayElementAtIndex(0);
                 }
 
+                EditorGUILayout.Space(20);
+
 
                 for(int i = 0; i < rows.arraySize; i++){
                     var row = rows.GetArrayElementAtIndex(i).FindPropertyRelative("_Nodes");
@@ -76,6 +78,8 @@ public class StageDataEditor : Editor
                     }
                 }
 
+                EditorGUILayout.Space();
+
                 if(GUILayout.Button("+")){
                     rows.InsertArrayElementAtIndex(rows.arraySize);
                 }
@@ -93,11 +97,9 @@ public class StageDataEditor : Editor
 
         EditorGUILayout.Space(30);
 
-        if(GUILayout.Button("Normalにこれを追加")){
-            (target as StageData).GoToNormal();
-        }
-        if(GUILayout.Button("Hardにこれを追加")){
-            (target as StageData).GoToHard();
+        if(GUILayout.Button("Testに入れて実行")){
+            (target as StageData).GoToTestSequence();
+            EditorApplication.ExecuteMenuItem("Edit/Play");
         }
 
         serializedObject.ApplyModifiedProperties();
