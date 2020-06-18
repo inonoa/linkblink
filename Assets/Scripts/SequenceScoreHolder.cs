@@ -7,19 +7,12 @@ using System.Linq;
 [Serializable]
 public class SequenceScoreHolder
 {
-    public SequenceScoreHolder(int[] bestScoresOrZeros){
-        _Scores = new StageScoreHolder[bestScoresOrZeros.Length];
+    public SequenceScoreHolder(int numStages){
+        _Scores = new StageScoreHolder[numStages];
 
-        for(int i = 0; i < _Scores.Length; i++){
-            _Scores[i] = new StageScoreHolder{
-                bestScore = bestScoresOrZeros[i]
-            };
+        for(int i = 0; i < numStages; i++){
+            _Scores[i] = new StageScoreHolder();
         }
-    }
-
-    public bool RegisterScore(int stageIdx, int score){
-        _Scores[stageIdx].score = score;
-        return score > _Scores[stageIdx].bestScore;
     }
 
     public void InjectBestScores(SequenceScoreHolder bestHolder){
@@ -27,6 +20,11 @@ public class SequenceScoreHolder
             Scores[i].bestScore = Mathf.Max(Scores[i].bestScore, bestHolder.Scores[i].bestScore);
         }
         _BestScoreSum = Mathf.Max(BestScoreSum, bestHolder.BestScoreSum);
+    }
+
+    public bool RegisterScore(int stageIdx, int score){
+        _Scores[stageIdx].score = score;
+        return score > _Scores[stageIdx].bestScore;
     }
 
     public void ApplyBestScores(){

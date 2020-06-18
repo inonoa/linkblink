@@ -18,8 +18,6 @@ public class SequenceData : ScriptableObject
     [SerializeField, TextArea] string memo;
     public IReadOnlyList<StageData> Stages => _Stages;
     [SerializeField] StageData[] _Stages;
-    [SerializeField] int[] _InitialScores;
-    public IReadOnlyList<int> InitialScores => _InitialScores;
     
 
     public void AddToFirst(StageData stage){
