@@ -141,9 +141,10 @@ public class BoardManager : MonoBehaviour
             pointEffect.transform.position = pos_point.Item1;
             pointEffect.Init(pos_point.Item2, colors.First());
         });
-        point.beamPoints.ForEach(pos_point => {
+        point.beamPoints.ForEach((i, pos_point) => {
             PointEffectMover pointEffect = Instantiate(pointPrefab);
-            pointEffect.transform.position = pos_point.Item1;
+            pointEffect.transform.position =
+                pos_point.Item1 + new Vector3(i * 0.03f, i * 0.1f, 0);
             pointEffect.Init(pos_point.Item2, colors.First());
         });
 
