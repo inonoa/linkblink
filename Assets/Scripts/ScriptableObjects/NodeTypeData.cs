@@ -25,6 +25,10 @@ public class NodeTypeData
 
     [field: SerializeField] [field: LabelText("BeamEmit")]
     public Color BeamEmit{ get; private set; } = new Color(0,0,0,1);
+
+    [field: SerializeField] [field: LabelText("PointTextColor")]
+    public Color PointTextColor{ get; private set; } = new Color(0,0,0,1);
+    
     
     
 
