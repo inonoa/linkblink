@@ -38,6 +38,10 @@ public class SequenceResultManager : ResultManager
 
         this.sequence = sequence;
 
+        var scoreCloneToSend = sequence.Scores.Clone();
+        scoreCloneToSend.ApplyBestScores();
+        PlayfabAccesssor.Instance.RequestSendData(sequence.Data.Name + DebugParameters.Instance.BestScoreSuffix, scoreCloneToSend);
+
         DOVirtual.DelayedCall(3f, () => {
             if(gameObject.activeInHierarchy) StartCoroutine(NextAnim(nextButtonImage.material));
         });
@@ -49,7 +53,6 @@ public class SequenceResultManager : ResultManager
 
         sequence.Scores.ApplyBestScores();
         sequence.playedYet = true;
-        PlayfabAccesssor.Instance.RequestSendData(sequence.Data.Name + DebugParameters.Instance.BestScoreSuffix, sequence.Scores);
         var group = GetComponent<CanvasGroup>();
         group.DOFade(0, 1f).SetEase(Ease.OutQuint);
         DOVirtual.DelayedCall(1f, () => {

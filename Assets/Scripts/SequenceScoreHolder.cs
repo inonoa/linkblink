@@ -40,4 +40,32 @@ public class SequenceScoreHolder
     public int ScoreSum => _Scores.Sum(sHolder => sHolder.score);
     [SerializeField] int _BestScoreSum = 0;
     public int BestScoreSum => _BestScoreSum;
+
+
+    public SequenceScoreHolder Clone(){
+        var copy = new SequenceScoreHolder(this._Scores.Count());
+        
+        copy._Scores.ForEach((i, holder) => {
+            holder.score = this.Scores[i].score;
+            holder.bestScore = this.Scores[i].bestScore;
+        });
+        copy._BestScoreSum = this.BestScoreSum;
+
+        return copy;
+    }
+}
+
+public static class ArrayForEach{
+
+    public static void ForEach<T>(this T[] arr, Action<T> action){
+        foreach(T elm in arr){
+            action.Invoke(elm);
+        }
+    }
+
+    public static void ForEach<T>(this T[] arr, Action<int, T> action){
+        for(int i = 0; i < arr.Length; i++){
+            action.Invoke(i, arr[i]);
+        }
+    }
 }

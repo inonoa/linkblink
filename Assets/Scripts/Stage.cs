@@ -8,7 +8,8 @@ public class Stage
     public readonly StageData data;
     public readonly StageScoreHolder scoreHolder;
     public readonly string name;
-    public Stage(StageData data, StageScoreHolder scoreHolder, string name){
-        (this.data, this.scoreHolder, this.name) = (data, scoreHolder, name);
+    public readonly Sequence sequence;
+    public Stage(StageData data, StageScoreHolder scoreHolder, string name, Sequence sequence){
+        (this.data, this.scoreHolder, this.name, this.sequence) = (data, scoreHolder, name, sequence);
     }
 }

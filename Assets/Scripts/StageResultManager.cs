@@ -26,13 +26,16 @@ public class StageResultManager : ResultManager
 
         totalScoreUI.Init(stage.scoreHolder.score, stage.scoreHolder.bestScore);
 
+        //Sequenceのほうではベストスコア適用をNext押すまで遅延させているがこちらでそれやる必要なかったのでここで
+        stage.scoreHolder.bestScore = Mathf.Max(currentStage.scoreHolder.bestScore, currentStage.scoreHolder.score);
+        PlayfabAccesssor.Instance.RequestSendData(stage.sequence.Data.Name + DebugParameters.Instance.BestScoreSuffix, stage.sequence.Scores);
+
         DOVirtual.DelayedCall(3f, () => {
             if(gameObject.activeInHierarchy) StartCoroutine(NextAnim(nextButtonImage.material));
         });
     }
 
     public override void OnNextButtonClick(){
-        currentStage.scoreHolder.bestScore = Mathf.Max(currentStage.scoreHolder.bestScore, currentStage.scoreHolder.score);
 
         var group = GetComponent<CanvasGroup>();
         group.DOFade(0, 1f).SetEase(Ease.OutQuint);
