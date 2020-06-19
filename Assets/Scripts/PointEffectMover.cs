@@ -12,19 +12,6 @@ public class PointEffectMover : MonoBehaviour
     [SerializeField] float fadeOutDelay = 1;
     [SerializeField] float fadeOutDuration = 1;
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.X)) Init(1770, NodeColor.Cyan);
-        if(Input.GetKeyDown(KeyCode.C)) Init(1770, NodeColor.Magenta);
-        if(Input.GetKeyDown(KeyCode.V)) Init(1770, NodeColor.Yellow);
-        if(Input.GetKeyDown(KeyCode.B)) Init(1770, NodeColor.Green);
-    }
-
-    void Start(){
-        var text = GetComponent<TextMesh>();
-        text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
-    }
-
 
     public void Init(int point, NodeColor nodeColor){
 
