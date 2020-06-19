@@ -19177,7 +19177,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2b7b3af64e4061f49a4224ac4530c74f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -22198,6 +22198,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -22330,6 +22331,22 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4f1797563ad964bb9c80490674e7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSecs: 1
+  moon: {fileID: 1580652987}
+  moonEmitColor: {r: 0.49707428, g: 0.5754717, b: 0.13843894, a: 1}
+  moonEmitSec: 0.3
 --- !u!1 &966191090
 GameObject:
   m_ObjectHideFlags: 0
@@ -38408,6 +38425,7 @@ MonoBehaviour:
     type: 3}
   rowPrefab: {fileID: 6955140410547315974, guid: b0cfbe4c29f49974586be34319376fe2,
     type: 3}
+  skyMover: {fileID: 963194230}
 --- !u!4 &1933308821
 Transform:
   m_ObjectHideFlags: 0

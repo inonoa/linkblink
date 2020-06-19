@@ -31,7 +31,8 @@ public class BoardManager : MonoBehaviour
 
     public event EventHandler AllNodeVanished;
 
-    [SerializeField] PointEffectMover pointPrefab;
+    [SerializeField] PointEffectMover nodePointPrefab;
+    [SerializeField] PointEffectMover beamPointPrefab;
 
     public Vector2 NodeDistanceUnit{ get; set; }
     public ScoreManager ScoreManager{ get; set; }
@@ -137,12 +138,12 @@ public class BoardManager : MonoBehaviour
         ScoreManager.AddScore(point.TotalPoint());
 
         point.nodePoints.ForEach(pos_point => {
-            PointEffectMover pointEffect = Instantiate(pointPrefab);
+            PointEffectMover pointEffect = Instantiate(nodePointPrefab);
             pointEffect.transform.position = pos_point.Item1;
             pointEffect.Init(pos_point.Item2, colors.First());
         });
         point.beamPoints.ForEach((i, pos_point) => {
-            PointEffectMover pointEffect = Instantiate(pointPrefab);
+            PointEffectMover pointEffect = Instantiate(beamPointPrefab);
             pointEffect.transform.position =
                 pos_point.Item1 + new Vector3(i * 0.03f, i * 0.1f, 0);
             pointEffect.Init(pos_point.Item2, colors.First());

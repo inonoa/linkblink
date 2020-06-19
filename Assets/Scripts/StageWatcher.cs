@@ -31,6 +31,8 @@ public class StageWatcher : MonoBehaviour
     [SerializeField] GameObject rowPrefab;
     public PlayMode PlayMode{ get; private set; } = PlayMode.Sequence;
 
+    [SerializeField] SkyMover skyMover;
+
     bool _AcceptsInput = true;
     bool AcceptsInput{
         get => _AcceptsInput;
@@ -134,6 +136,7 @@ public class StageWatcher : MonoBehaviour
 
         currentBoard = LoadBoard(stage.data);
         currentBoard.AllNodeVanished += (s, e) => {
+            skyMover.Light();
             AcceptsInput = false;
             LoadNextStage();
         };

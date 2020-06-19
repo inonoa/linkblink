@@ -6,6 +6,10 @@
         _ColorUp ("Color Up", Color) = (1, 1, 1, 1)
         _ColorDown ("Color Down", Color) = (0, 0, 0, 1)
         _StarTex ("Stars Texture", 2D) = "black" {}
+        _LightRingAngle("Light Ring Angle", Vector) = (0, 0, 1, 0)
+        _LightDistance("Light Distance", Float) = 0.1
+        _LightWidth("Light Width", Float) = 0.1
+        _LightColor("Light Color", Color) = (0, 0.3, 0.3, 1)
     }
 
     SubShader
@@ -42,6 +46,10 @@
             fixed4 _ColorUp;
             fixed4 _ColorDown;
             sampler2D _StarTex;
+            float4 _LightRingAngle;
+            float _LightDistance;
+            float _LightWidth;
+            float4 _LightColor;
 
             v2f vert (appdata v)
             {
@@ -62,7 +70,14 @@
                 tan = (tan >= -rate ? tan + rate : - tan - rate * 5);
                 fixed4 baseCol = fixed4(lerp(_ColorDown.rgb, _ColorUp.rgb, tan), 1.0);
                 fixed4 starsCol = tex2D(_StarTex, (i.texcoord.xy - (_Time.xy / 200) % fixed2(1, 1))) * (random((_Time.xy + i.texcoord.xy) % float2(1,1)) + 0.5);
-                return baseCol + starsCol;
+
+                float3 dir = normalize(i.texcoord);
+                float3 lightDir = normalize(_LightRingAngle.xyz);
+                float distanceFromLight = sqrt(dot(dir - lightDir, dir - lightDir));
+                float lightIntensity = saturate(_LightWidth - abs(pow(distanceFromLight - _LightDistance, 2))) / _LightWidth * saturate(1 - 0.7 * distanceFromLight * distanceFromLight);
+                fixed4 lightCol = lightIntensity * _LightColor;
+
+                return baseCol + starsCol + lightCol;
             }
             ENDCG
         }
