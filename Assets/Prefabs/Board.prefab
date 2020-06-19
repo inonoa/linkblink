@@ -49,6 +49,8 @@ MonoBehaviour:
   _BeamReachesNode: 0
   beamPrefab: {fileID: 5164653187069967805, guid: 9afca3312f2afcb4f84448edc08c83c3,
     type: 3}
+  pointPrefab: {fileID: 4628714018024929397, guid: 7cc3b0a643e867645a656691437c9157,
+    type: 3}
   lineDeletedSound:
     clip: {fileID: 8300000, guid: d07c9103d143e184bb7a3fc516e5bbf8, type: 3}
     volume: 0.636

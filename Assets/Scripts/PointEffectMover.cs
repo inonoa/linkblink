@@ -15,13 +15,16 @@ public class PointEffectMover : MonoBehaviour
 
     public void Init(int point, NodeColor nodeColor){
 
+        var text = GetComponent<TextMesh>();
+
+        text.text = point.ToString();
+
         //移動
         transform.DOMoveY(moveDistance, moveDuration)
             .SetRelative()
             .SetEase(Ease.OutQuint);
         
         //色の初期化
-        var text = GetComponent<TextMesh>();
         var color = TypeDataHolder.Instance[nodeColor.ToType()].PointTextColor;
         color.a = 0;
         text.color = color;

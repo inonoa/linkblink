@@ -31,6 +31,8 @@ public class BoardManager : MonoBehaviour
 
     public event EventHandler AllNodeVanished;
 
+    [SerializeField] PointEffectMover pointPrefab;
+
     public Vector2 NodeDistanceUnit{ get; set; }
     public ScoreManager ScoreManager{ get; set; }
     [SerializeField] SoundAndVolume lineDeletedSound;
@@ -130,7 +132,20 @@ public class BoardManager : MonoBehaviour
 
     void SelectSecondTime(NodeMover node){
         Vector3[] nodePositions = selectedNodes.Select(nd => nd.transform.position).ToArray();
-        ScoreManager.LinkToScore(nodePositions, NodeDistanceUnit);
+        var point = ScoreManager.LinkToScore(nodePositions);
+
+        ScoreManager.AddScore(point.TotalPoint());
+
+        point.nodePoints.ForEach(pos_point => {
+            PointEffectMover pointEffect = Instantiate(pointPrefab);
+            pointEffect.transform.position = pos_point.Item1;
+            pointEffect.Init(pos_point.Item2, colors.First());
+        });
+        point.beamPoints.ForEach(pos_point => {
+            PointEffectMover pointEffect = Instantiate(pointPrefab);
+            pointEffect.transform.position = pos_point.Item1;
+            pointEffect.Init(pos_point.Item2, colors.First());
+        });
 
         foreach(NodeMover linkedNode in selectedNodes){
             //黒の存在を無視しているがまあ黒の方でlastは鳴るのでこれでいいかな……
