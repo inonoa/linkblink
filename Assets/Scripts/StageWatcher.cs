@@ -33,13 +33,14 @@ public class StageWatcher : MonoBehaviour
 
     [SerializeField] SkyMover skyMover;
 
-    bool _AcceptsInput = true;
+    bool _AcceptsInput = false;
     bool AcceptsInput{
         get => _AcceptsInput;
         set{
             (resetButton.interactable, cancelButton.interactable, _AcceptsInput) = (value, value, value);
         }
     }
+
 
     void Start(){
         resetButton.onClick.AddListener(() => {
