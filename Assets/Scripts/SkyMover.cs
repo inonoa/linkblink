@@ -21,7 +21,7 @@ public class SkyMover : MonoBehaviour
     public void Light(){
 
         Material moonMat = moon.GetComponent<MeshRenderer>().material;
-        moonMat.SetColor("_LightColor", lightColor);
+        RenderSettings.skybox.SetColor("_LightColor", lightColor);
 
         Tween moonTween = DOTween.To(
             () => moonEmit,

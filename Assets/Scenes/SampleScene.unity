@@ -22344,9 +22344,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightSecs: 1.5
-  lightColor: {r: 0, g: 0.49202788, b: 0.5019608, a: 1}
+  lightColor: {r: 0.69803923, g: 0, b: 0.50680864, a: 1}
   moon: {fileID: 1580652987}
-  moonEmitColor: {r: 0, g: 0.61912936, b: 0.6509804, a: 1}
+  moonEmitColor: {r: 0.6431373, g: 0, b: 0.49743447, a: 1}
   moonEmitSec: 0.4
 --- !u!1 &966191090
 GameObject:
