@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _StarTex:
-        m_Texture: {fileID: 2800000, guid: 4ec41c56b81b7e147acbc04bacab88a2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 93cb131cbc0c635478c3465a01bf856c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -83,5 +83,5 @@ Material:
     - _ColorDown: {r: 0, g: 0.24313726, b: 0.31764707, a: 1}
     - _ColorUp: {r: 0.09411765, g: 0.17254902, b: 0.19215687, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LightColor: {r: 0.18503377, g: 0.07450981, b: 0.25490198, a: 1}
+    - _LightColor: {r: 0, g: 0.3764706, b: 0.36413234, a: 1}
     - _LightRingAngle: {r: -0.45, g: 0.24, b: 1, a: 0}
