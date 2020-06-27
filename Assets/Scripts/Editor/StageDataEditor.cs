@@ -51,11 +51,20 @@ public class StageDataEditor : Editor
                     row.InsertArrayElementAtIndex(0);
                 }
             }
+            if(GUILayout.Button("-", GUILayout.Width(20), GUILayout.ExpandHeight(true))){
+                for(int i = 0; i < rows.arraySize; i++){
+                    var row = rows.GetArrayElementAtIndex(i).FindPropertyRelative("_Nodes");
+                    row.DeleteArrayElementAtIndex(0);
+                }
+            }
 
             using(new EditorGUILayout.VerticalScope()){
 
                 if(GUILayout.Button("+")){
                     rows.InsertArrayElementAtIndex(0);
+                }
+                if(GUILayout.Button("-")){
+                    rows.DeleteArrayElementAtIndex(0);
                 }
 
                 EditorGUILayout.Space(20);
@@ -80,11 +89,20 @@ public class StageDataEditor : Editor
 
                 EditorGUILayout.Space();
 
+                if(GUILayout.Button("-")){
+                    rows.DeleteArrayElementAtIndex(rows.arraySize - 1);
+                }
                 if(GUILayout.Button("+")){
                     rows.InsertArrayElementAtIndex(rows.arraySize);
                 }
             }
 
+            if(GUILayout.Button("-", GUILayout.Width(20), GUILayout.ExpandHeight(true))){
+                for(int i = 0; i < rows.arraySize; i++){
+                    var row = rows.GetArrayElementAtIndex(i).FindPropertyRelative("_Nodes");
+                    row.DeleteArrayElementAtIndex(row.arraySize - 1);
+                }
+            }
             if(GUILayout.Button("+", GUILayout.Width(20), GUILayout.ExpandHeight(true))){
                 for(int i = 0; i < rows.arraySize; i++){
                     var row = rows.GetArrayElementAtIndex(i).FindPropertyRelative("_Nodes");

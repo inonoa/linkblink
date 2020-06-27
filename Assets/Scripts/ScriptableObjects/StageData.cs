@@ -22,6 +22,7 @@ public class StageData : ScriptableObject{
     [Button][ExecuteInEditMode]
     public void GoToTestSequence(){
         if(!GameData.Instance.TestSequnce.Stages.Contains(this)) GameData.Instance.TestSequnce.AddToFirst(this);
+        else GameData.Instance.TestSequnce.MoveToFirst(this);
     }
     [Button][ExecuteInEditMode]
     public void CopyArray(StageData src){

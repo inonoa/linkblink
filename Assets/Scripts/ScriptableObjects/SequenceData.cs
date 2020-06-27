@@ -23,6 +23,12 @@ public class SequenceData : ScriptableObject
     public void AddToFirst(StageData stage){
         _Stages = new StageData[]{ stage }.Concat(_Stages).ToArray();
     }
+    public void MoveToFirst(StageData stage){
+        _Stages = _Stages.ToList()
+                         .Except(new StageData[]{ stage })
+                         .Prepend(stage)
+                         .ToArray();
+    }
 
     [Button]
     void AddToGameData(){
