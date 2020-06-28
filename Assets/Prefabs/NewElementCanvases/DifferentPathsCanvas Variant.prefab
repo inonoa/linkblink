@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4185027294627437235, guid: 8aae6ddf0046a7e419890b2bc83b2a5a,
         type: 3}
       propertyPath: m_Name
-      value: DifferentPathsCanvas
+      value: DifferentPathsCanvas Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4185027294627437239, guid: 8aae6ddf0046a7e419890b2bc83b2a5a,
         type: 3}
@@ -125,7 +125,7 @@ PrefabInstance:
     - target: {fileID: 4185027294953340416, guid: 8aae6ddf0046a7e419890b2bc83b2a5a,
         type: 3}
       propertyPath: m_Text
-      value: "\u304A\u306A\u3058\u6570\u3067\u3082\n\u308F\u3063\u304B\u304C\u9577\u3044\u3068\n\u9AD8\u5F97\u70B9\n\n\u9577\u3044\u307F\u3061\u3092\n\u63A2\u3057\u3066\u307F\u3088\u3046"
+      value: "\u304A\u306A\u3058\u6570\u3067\u3082\n\u308F\u3063\u304B\u304C\u9577\u3044\u3068\n\u9AD8\u5F97\u70B9\n\n\u9577\u3044\u307F\u3061\u3092\n\u307F\u306E\u304C\u3059\u306A"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aae6ddf0046a7e419890b2bc83b2a5a, type: 3}
