@@ -11,6 +11,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] Text text;
     [SerializeField] int[] pointsPerNode;
     [SerializeField] int beamPointRate = 20;
+    [SerializeField] Text plusText;
+    float plusTextDefY;
+    void Start() => plusTextDefY = plusText.transform.localPosition.y;
 
     int _Score;
     public int Score => _Score;
@@ -23,6 +26,33 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int delta){
         _Score += delta;
         text.text = _Score.ToString();
+        PlusAnim(delta);
+    }
+
+    void PlusAnim(int delta){
+        plusText.text = "+" + delta;
+
+        plusText.gameObject.SetActive(true);
+        plusText.color = plusText.color.Ato(0);
+        //transformの拡張メソッド生やせるなこれ
+        plusText.transform.localPosition = plusText.transform.localPosition.Yto(plusTextDefY - 50);
+
+        DG.Tweening.Sequence seq = DOTween.Sequence();
+        seq.Append(
+            plusText.transform.DOLocalMoveY(50, 1f)
+                              .SetRelative()
+                              .SetEase(Ease.OutQuint)
+        );
+        seq.Join(
+            plusText.DOFade(1, 0.5f)
+        );
+        seq.AppendInterval(
+            0.3f
+        );
+        seq.Append(
+            plusText.DOFade(0, 0.3f)
+        );
+        seq.onComplete += () => plusText.gameObject.SetActive(false);
     }
 
     public PointInfo LinkToScore(Vector3[] nodePositions){
