@@ -11,7 +11,4 @@ public class RainbowElement : NewElement
         return data.Rows.Any(row => row.Nodes.Any(node => node.HasTwoColors()));
     }
 
-    public RainbowElement(){
-        NewElement._Elements.Add(this);
-    }
 }

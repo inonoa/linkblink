@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class NewElement : ScriptableObject
 {
-    protected static List<NewElement> _Elements = new List<NewElement>();
+    private static List<NewElement> _Elements = new List<NewElement>();
     public static IReadOnlyList<NewElement> Elements => _Elements;
 
     protected abstract bool ExistIn(StageData data);
@@ -25,4 +25,8 @@ public abstract class NewElement : ScriptableObject
     public event EventHandler dialogClosed;
 
     [SerializeField] DialogManager _Dialog;
+
+    public NewElement(){
+        _Elements.Add(this);
+    }
 }
