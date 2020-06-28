@@ -18,6 +18,8 @@ public class StageDataEditor : Editor
         EditorGUILayout.PropertyField(memo);
         var diff = serializedObject.FindProperty("difficulty");
         EditorGUILayout.PropertyField(diff);
+        var tags = serializedObject.FindProperty("newElementTags");
+        EditorGUILayout.PropertyField(tags);
         var unit = serializedObject.FindProperty("_DistanceUnit");
         EditorGUILayout.PropertyField(unit);
 

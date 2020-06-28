@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a47b3f0f7b9c3a49b3f72bfc43919d8, type: 3}
   m_Name: Stage1
   m_EditorClassIdentifier: Assembly-CSharp::StageData
-  memo: 
+  memo: "\u74B0\u3063\u304B\u72B6\u306B\u3064\u306A\u3052\u308B\u3068\u6D88\u3048\u308B\u3088"
   difficulty: 1
   _DistanceUnit: {x: 0, y: 0}
   _Rows:

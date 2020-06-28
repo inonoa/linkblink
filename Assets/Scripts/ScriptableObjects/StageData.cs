@@ -14,10 +14,16 @@ public class StageData : ScriptableObject{
         None, ForTutorial, Easy, Normal, Hard, Lunatic
     }
     [SerializeField] Difficulty difficulty;
+    [SerializeField] ElementTag[] newElementTags;
+    public IReadOnlyList<ElementTag> NewElementTags => newElementTags;
     [SerializeField] Vector2 _DistanceUnit = new Vector2();
     public Vector2 DistanceUnit => _DistanceUnit;
     [SerializeField] [ListDrawerSettings( Expanded = true )] NodeRow[] _Rows;
     public IReadOnlyList<NodeRow> Rows => _Rows;
+
+    public IReadOnlyList<IReadOnlyList<NodeType>> ToNodesList(){
+        return Rows.Select(row => row.Nodes.ToList()).ToList();
+    }
 
     [Button][ExecuteInEditMode]
     public void GoToTestSequence(){

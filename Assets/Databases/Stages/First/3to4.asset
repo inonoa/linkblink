@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a47b3f0f7b9c3a49b3f72bfc43919d8, type: 3}
-  m_Name: differentScores
+  m_Name: 3to4
   m_EditorClassIdentifier: 
-  memo: "\u540C\u3058\u500B\u6570\u3067\u3082\u9577\u3044\u65B9\u304C\u70B9\u6570\u304C\u9AD8\u3044\u3088"
-  difficulty: 1
-  newElementTags: 00000000
+  memo: "3\u3064\u3088\u308A4\u3064\u306E\u307B\u3046\u304C\u9AD8\u5F97\u70B9"
+  difficulty: 0
   _DistanceUnit: {x: 0, y: 0}
   _Rows:
-  - _Nodes: 020000000000000002000000
-  - _Nodes: 000000000100000001000000
-  - _Nodes: 020000000100000000000000
+  - _Nodes: 0000000002000000010000000200000000000000
+  - _Nodes: 0000000000000000000000000000000000000000
+  - _Nodes: 0100000002000000000000000200000001000000
