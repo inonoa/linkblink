@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Linq;
 
 public class TitleManager : MonoBehaviour
 {
@@ -24,6 +25,21 @@ public class TitleManager : MonoBehaviour
 
         game = new Game(GameData.Instance);
         //sequenceSelectManager.InitSequences(game.Sequences[0], game.Sequences[1]);
+
+        PlayfabAccesssor.Instance.RequestGetData<bool>(
+            NewElement.Elements.Select(elem => elem.ElementName + "NewElement").ToArray(),
+            dict => {
+                foreach(NewElement newElem in NewElement.Elements){
+                    if(dict.ContainsKey(newElem.ElementName + "NewElement")){
+                        print(newElem.ElementName);
+                        if(dict[newElem.ElementName + "NewElement"]){
+                            print(newElem.ElementName + " set found");
+                            newElem.SetFound();
+                        }
+                    }
+                }
+            }
+        );
     }
 
     public void Init(){

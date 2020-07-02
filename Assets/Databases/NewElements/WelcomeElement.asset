@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: WelcomeElement
   m_EditorClassIdentifier: 
   _Dialog: {fileID: 4091489009768621256, guid: f5c23fe223ab7784792bf653d2be818f, type: 3}
+  elementName: welcome

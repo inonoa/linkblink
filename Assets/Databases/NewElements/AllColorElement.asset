@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: AllColorElement
   m_EditorClassIdentifier: 
   _Dialog: {fileID: 4624576779044747209, guid: 28a94936ccd06f440916f9621c0f0e18, type: 3}
+  elementName: allcolor

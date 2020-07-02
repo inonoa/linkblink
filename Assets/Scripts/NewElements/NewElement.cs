@@ -12,9 +12,15 @@ public abstract class NewElement : ScriptableObject
 
     public bool ExistInFirstTime(StageData data){
         if(found) return false;
-        return (found = ExistIn(data));
+        found = ExistIn(data);
+        PlayfabAccesssor.Instance.RequestSendData(
+            elementName + "NewElement",
+            found
+        );
+        return found;
     }
     [System.NonSerialized] bool found = false;
+    public void SetFound() => found = true;
 
     public void Init(){
         var dlg = GameObject.Instantiate(_Dialog);
@@ -25,6 +31,8 @@ public abstract class NewElement : ScriptableObject
     public event EventHandler dialogClosed;
 
     [SerializeField] DialogManager _Dialog;
+    [SerializeField] string elementName;
+    public string ElementName => elementName;
 
     public NewElement(){
         _Elements.Add(this);

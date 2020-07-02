@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DiferrentPathsElement
   m_EditorClassIdentifier: 
   _Dialog: {fileID: 8185830386429748384, guid: 4f1b1eacb14f2604bb02538f7de780ba, type: 3}
+  elementName: diffpaths

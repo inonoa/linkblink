@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DiferrentNumbersElement
   m_EditorClassIdentifier: 
   _Dialog: {fileID: 5678187685857626905, guid: 527f329986bde4d4a9e53397cb79ebf1, type: 3}
+  elementName: diffnums

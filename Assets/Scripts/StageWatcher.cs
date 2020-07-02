@@ -49,6 +49,7 @@ public class StageWatcher : MonoBehaviour
         cancelButton.onClick.AddListener(() => {
             currentBoard.CancelSelect();
         });
+        print("aa");
     }
 
     void Update(){

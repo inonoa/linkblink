@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: BlackElement
   m_EditorClassIdentifier: 
   _Dialog: {fileID: 183435577367203486, guid: 351cd14f309511c4faecebb858b9acb5, type: 3}
+  elementName: black

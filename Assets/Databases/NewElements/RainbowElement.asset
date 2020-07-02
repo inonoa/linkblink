@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: RainbowElement
   m_EditorClassIdentifier: 
   _Dialog: {fileID: 4185027294627437241, guid: 8aae6ddf0046a7e419890b2bc83b2a5a, type: 3}
+  elementName: rainbow
