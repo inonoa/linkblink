@@ -1328,7 +1328,8 @@ GameObject:
   - component: {fileID: 142822354}
   - component: {fileID: 142822357}
   - component: {fileID: 142822356}
-  m_Layer: 0
+  - component: {fileID: 142822355}
+  m_Layer: 11
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1344,11 +1345,26 @@ Transform:
   m_GameObject: {fileID: 142822353}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 1956638993}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &142822355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142822353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e790ca67d37181941829532e2a3678a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodesTmp:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!23 &142822356
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21714,7 +21730,7 @@ PrefabInstance:
     - target: {fileID: 2207633172127509896, guid: c5313c41d55f1964c81895a277215746,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2207633172127510013, guid: c5313c41d55f1964c81895a277215746,
         type: 3}
