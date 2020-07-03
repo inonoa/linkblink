@@ -46,6 +46,11 @@ public class BoardManager : MonoBehaviour
             node.MouseOn += (s, e) => OnMouseOnNode((NodeMover)s);
             node.MouseOut += (s, e) => nodeMouseOn = null;
             node.ClickedSecondTime += (s, e) => OnNodeClickedSecondTime((NodeMover)s);
+            node.Init(() => nodes.ToArray());
+            node.DiedSelf += (nd, __) => {
+                if(nodes.Contains(nd as NodeMover)) nodes.Remove(nd as NodeMover);
+                CheckEnd();
+            };
         }
 
         shutter = shutterObj.GetComponent<TouchableByMouse>();
@@ -138,11 +143,16 @@ public class BoardManager : MonoBehaviour
 
         foreach(NodeMover linkedNode in link.Nodes){
             //黒の存在を無視しているがまあ黒の方でlastは鳴るのでこれでいいかな……
+            //これ100個ぐらい同時に消えても最後の一個しか最後に消えたことにならない？
             RemoveNode(linkedNode, link.Count >= nodes.Count);
         }
         link.OnClear();
         link = new Link();
 
+        CheckEnd();
+    }
+
+    void CheckEnd(){
         if(nodes.All(nd => nd.Type == NodeType.Black)){
             var blacks = nodes.Where(nd => nd.Type == NodeType.Black).ToArray();
             foreach(NodeMover black in blacks){

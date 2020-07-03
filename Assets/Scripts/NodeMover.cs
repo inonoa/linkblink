@@ -47,9 +47,17 @@ public class NodeMover : MonoBehaviour, IVanish
 
     INodeLight nodeLight;
 
+    Bomb bomb;
+    Func<NodeMover[]> nodesGetter = () => new NodeMover[0]{};
+
+    public void Init(Func<NodeMover[]> nodesGetter){
+        this.nodesGetter = nodesGetter;
+    }
+
     void Start()
     {
         nodeLight = GetComponent<INodeLight>();
+        bomb = GetComponentInChildren<Bomb>();
         DOVirtual.DelayedCall(
             UnityEngine.Random.Range(0, 0.3f),
             () => soundGroup.OnAwakeSound.Play(UnityEngine.Random.Range(0.2f, 0.6f))
@@ -95,14 +103,23 @@ public class NodeMover : MonoBehaviour, IVanish
 
     [Button]
     public void Vanish(bool isLast){
+        if(State == EState.Vanishing) return;
+
         State = EState.Vanishing;
         nodeLight.Vanish();
         DOVirtual.DelayedCall(
             UnityEngine.Random.Range(0, 0.3f),
             () => (isLast ? soundGroup.OnVanishLastSound : soundGroup.OnVanishSound).Play(UnityEngine.Random.Range(0.2f, 1))
         );
+        bomb?.Explode(nodesGetter());
     }
     public void Vanish() => Vanish(false);
+
+    public event EventHandler DiedSelf;
+    public void DieSelf(){
+        Vanish();
+        DiedSelf?.Invoke(this, EventArgs.Empty);
+    }
 
     void Update(){
 

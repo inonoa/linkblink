@@ -21,7 +21,7 @@ public class Bomb : MonoBehaviour
         foreach(NodeMover node in nodes){
             if(Vector3.Distance(transform.position, node.transform.position) < radius){
                 //Boardに通知しないといけなそう
-                node.Vanish();
+                node.DieSelf();
             }
         }
     }
