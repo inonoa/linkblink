@@ -2,6 +2,7 @@
 
     Properties{
         _Ramp("Ramp Texture", 2D) = "white" {}
+        _Light("Light", Float) = 0.5
     }
 
     SubShader{
@@ -56,6 +57,7 @@
         }
 
         sampler2D _Ramp;
+        float _Light;
 
         fixed4 frag (v2f i) : SV_Target
         {
@@ -67,8 +69,8 @@
             float NdotL = dot(normal, lightDir);
             float diff = NdotL * 0.5 + 0.5;
 
-            fixed4 col = tex2D(_Ramp, fixed2(diff * diff + (_Time.y % 1), 0.5));
-            col.a *= 0.5;
+            fixed4 col = tex2D(_Ramp, fixed2(diff * diff + (_Time.x % 1), 0.5));
+            col.a *= _Light;
 
             return col;
         }

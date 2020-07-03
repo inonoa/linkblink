@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class NodeLightWithBomb : MonoBehaviour, INodeLight
 {
-    [SerializeField] Material bombMat;
-
+    [SerializeField] MeshRenderer bomb;
+    Material bombMat;
+    float bombDefaultLight;
 
     [SerializeField] Shader shaderOpaque;
     [SerializeField] Shader shaderTransparent;
@@ -14,20 +15,24 @@ public class NodeLightWithBomb : MonoBehaviour, INodeLight
     float defaultEmission;
     const string _Emit = "_Emit";
     const string _Alpha = "_Alpha";
+    const string _Light = "_Light";
 
     IEnumerator FadeIn(){
         mat.shader = shaderTransparent;
         mat.ChangeRenderMode(RenderMode.Transparent);
 
         mat.SetFloat(_Alpha, 0);
+        bombMat.SetFloat(_Light, 0);
 
         float time = 0;
         while((time += Time.deltaTime) < 0.5f){
             mat.SetFloat(_Alpha, mat.GetFloat(_Alpha) + Time.deltaTime * 2);
+            bombMat.SetFloat(_Light, bombMat.GetFloat(_Light) + Time.deltaTime);
             yield return null;
         }
 
         mat.SetFloat(_Alpha, 1);
+        bombMat.SetFloat(_Light, 0.5f);
 
         yield return null;
 
@@ -66,6 +71,7 @@ public class NodeLightWithBomb : MonoBehaviour, INodeLight
         Destroy(gameObject);
     }
     [SerializeField] float lightRate = 2;
+    [SerializeField] float bombLightRate = 2;
     [SerializeField] float lightSec = 0.3f;
 
     IEnumerator lightCoroutine;
@@ -74,6 +80,9 @@ public class NodeLightWithBomb : MonoBehaviour, INodeLight
         while((emit = mat.GetFloat(_Emit)) <= defaultEmission * lightRate){
             mat.SetFloat(_Emit,
                 emit + lightRate * (Time.deltaTime / lightSec) * defaultEmission
+            );
+            bombMat.SetFloat(_Light,
+                bombMat.GetFloat(_Light) + bombLightRate * (Time.deltaTime / lightSec) * bombDefaultLight
             );
             yield return null;
         }
@@ -93,6 +102,9 @@ public class NodeLightWithBomb : MonoBehaviour, INodeLight
             mat.SetFloat(_Emit,
                 emit - lightRate * (Time.deltaTime / lightSec) * defaultEmission
             );
+            bombMat.SetFloat(_Light,
+                bombMat.GetFloat(_Light) - bombLightRate * (Time.deltaTime / lightSec) * bombDefaultLight
+            );
             yield return null;
         }
     }
@@ -106,6 +118,8 @@ public class NodeLightWithBomb : MonoBehaviour, INodeLight
 
     void Start()
     {
+        bombMat = bomb.material;
+        bombDefaultLight = bombMat.GetFloat(_Light);
         mat = GetComponent<MeshRenderer>().material;
         defaultEmission = mat.GetFloat(_Emit);
         StartCoroutine(FadeIn());
