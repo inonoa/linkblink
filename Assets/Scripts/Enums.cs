@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum NodeType{
-    None, Cyan, Magenta, Yellow, Green, CyanMagenta, Black, AllColor, CyanYellow, CyanGreen, MagentaYellow, MagentaGreen, YellowGreen
+    None, Cyan, Magenta, Yellow, Green, CyanMagenta, Black, AllColor, CyanYellow, CyanGreen, MagentaYellow, MagentaGreen, YellowGreen, BombCyan
 }
 
 public enum NodeColor{
@@ -36,6 +36,8 @@ public static class ColorTypeExtension{
             case NodeType.MagentaYellow: return new NodeColor[]{ NodeColor.Magenta, NodeColor.Yellow };
             case NodeType.MagentaGreen:  return new NodeColor[]{ NodeColor.Magenta, NodeColor.Green };
             case NodeType.YellowGreen: return new NodeColor[]{ NodeColor.Yellow, NodeColor.Green };
+
+            case NodeType.BombCyan: return new NodeColor[]{ NodeColor.Cyan };
 
             case NodeType.Black: return new NodeColor[]{};
             case NodeType.AllColor: return Enum.GetValues(typeof(NodeColor)) as NodeColor[];
