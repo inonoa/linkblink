@@ -61,10 +61,12 @@ public class NodeLightWithBomb : MonoBehaviour, INodeLight
         float time = 0;
         while((time += Time.deltaTime) < 1){
             mat.SetFloat(_Alpha, mat.GetFloat(_Alpha) - Time.deltaTime);
+            bombMat.SetFloat(_Light, bombMat.GetFloat(_Light) - Time.deltaTime * bombDefaultLight);
             yield return null;
         }
 
         mat.SetFloat(_Alpha, 0);
+        bombMat.SetFloat(_Light, 0);
 
         yield return null;
 

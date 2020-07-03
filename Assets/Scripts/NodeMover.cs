@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Rendering;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 
 public class NodeMover : MonoBehaviour, IVanish
@@ -92,6 +93,7 @@ public class NodeMover : MonoBehaviour, IVanish
         nodeLight.UnLight();
     }
 
+    [Button]
     public void Vanish(bool isLast){
         State = EState.Vanishing;
         nodeLight.Vanish();
