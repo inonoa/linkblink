@@ -119,7 +119,8 @@ MonoBehaviour:
     <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <PointTextColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - _Type: 13
-    <Prefab>k__BackingField: {fileID: 0}
+    <Prefab>k__BackingField: {fileID: 2861183565126133856, guid: fecddfce41d1e5c48bc7da499d8d1635,
+      type: 3}
     <EditorColor>k__BackingField: {r: 0, g: 0.4716981, b: 0.45341602, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0.9999995, b: 1, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}

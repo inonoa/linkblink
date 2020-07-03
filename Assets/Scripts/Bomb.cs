@@ -13,7 +13,7 @@ public class Bomb : MonoBehaviour
 
     void Start()
     {
-        radius = transform.localScale.x / 2;
+        radius = transform.localScale.x / 4;
     }
 
     public void Explode(NodeMover[] nodes){
