@@ -67,7 +67,7 @@ public class PlayfabAccesssor
 
     class Wrap<T>{ public T wrapped; }
     public PlayfabAccesssor RequestSendData<T>(string key, T data){
-        key.print();
+        //key.print();
         AddRequest(() => SendData(key, data));
         return this;
     }
@@ -75,7 +75,7 @@ public class PlayfabAccesssor
 
         string dataStr = JsonUtility.ToJson(new Wrap<T>{ wrapped = data });
 
-        dataStr.print();
+        //dataStr.print();
 
         UpdateUserDataRequest request = new UpdateUserDataRequest{
             Data = new Dictionary<string, string>(){

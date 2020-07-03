@@ -10,7 +10,8 @@ public class BoardManager : MonoBehaviour
     TouchableByMouse shutter;
     [SerializeField] GameObject shutterObj;
 
-    List<NodeMover> selectedNodes = new List<NodeMover>();
+    Link link = new Link();
+
     NodeMover nodeMouseOn;
     [SerializeField] bool _BeamReachesNode = false;
     bool BeamReachesNode{
@@ -24,10 +25,8 @@ public class BoardManager : MonoBehaviour
     }
 
     [SerializeField] Beam beamPrefab;
-    List<Beam> beams = new List<Beam>();
     List<NodeMover> nodes;
 
-    HashSet<NodeColor> colors = new HashSet<NodeColor>();
 
     public event EventHandler AllNodeVanished;
 
@@ -55,7 +54,7 @@ public class BoardManager : MonoBehaviour
     void OnMouseOnNode(NodeMover node){
         nodeMouseOn = node;
 
-        if(selectedNodes.Count > 0 && DebugParameters.Instance.LinkTrigger == LinkTriggerType.MouseOver){
+        if(link.Count > 0 && DebugParameters.Instance.LinkTrigger == LinkTriggerType.MouseOver){
             StartCoroutine(TrySelectDelayed(node));
         }
 
@@ -74,7 +73,7 @@ public class BoardManager : MonoBehaviour
         NodeMover node = (NodeMover)sender;
 
         bool WillSelectNode(){
-            if(selectedNodes.Count == 0) return true;
+            if(link.Count == 0) return true;
             return DebugParameters.Instance.LinkTrigger == LinkTriggerType.Click;
         }
 
@@ -84,41 +83,29 @@ public class BoardManager : MonoBehaviour
     }
 
     void Select(NodeMover node){
-        CreateBeam(node);
-        selectedNodes.Add(node);
-        if(selectedNodes.Count==1){
-            colors = new HashSet<NodeColor>(node.Colors);
-        }else{
-            int lastColors = colors.Count;
-            colors.IntersectWith(node.Colors);
-            if((lastColors > 1 || node.Colors.Count() > 1) && colors.Count == 1){
-                foreach(Beam bm in beams){
-                    bm.SetColor(colors.ElementAt(0).ToType());
-                }
-            }
-        }
-        node.OnSelected(selectedNodes.Count - 1);
+        link.Add(node, CreateBeam(node));
+        node.OnSelected(link.Count - 1);
     }
 
     bool CanSelectNode(NodeMover node){
         if(node.Type == NodeType.Black) return false;
-        if(selectedNodes.Count == 0) return true;
+        if(link.Count == 0) return true;
         if(!BeamReachesNode){
             return false;
         }
         if(!node.CanBeSelected) return false;
 
-        return colors.Intersect(node.Colors).Count() > 0;
+        return link.HasSameColor(node.Colors);
     }
 
-    void CreateBeam(NodeMover node){
+    Beam CreateBeam(NodeMover node){
         Beam beam = Instantiate(beamPrefab);
         beam.SetColor(node.Type);
         beam.LineRenderer.SetPositions(new Vector3[]{
             node.transform.position,
             node.transform.position
         });
-        beams.Add(beam);
+        return beam;
     }
 
     void OnNodeClickedSecondTime(NodeMover node){
@@ -128,11 +115,11 @@ public class BoardManager : MonoBehaviour
     }
 
     bool CanSelectSecondTime(NodeMover node){
-        return (selectedNodes.Count > 2) && (node == selectedNodes.First()) && BeamReachesNode;
+        return (link.Count > 2) && (node == link.Nodes.First()) && BeamReachesNode;
     }
 
     void SelectSecondTime(NodeMover node){
-        Vector3[] nodePositions = selectedNodes.Select(nd => nd.transform.position).ToArray();
+        Vector3[] nodePositions = link.Nodes.Select(nd => nd.transform.position).ToArray();
         var point = ScoreManager.LinkToScore(nodePositions);
 
         ScoreManager.AddScore(point.TotalPoint());
@@ -140,25 +127,21 @@ public class BoardManager : MonoBehaviour
         point.nodePoints.ForEach(pos_point => {
             PointEffectMover pointEffect = Instantiate(nodePointPrefab);
             pointEffect.transform.position = pos_point.Item1;
-            pointEffect.Init(pos_point.Item2, colors.First());
+            pointEffect.Init(pos_point.Item2, link.Colors.First());
         });
         point.beamPoints.ForEach((i, pos_point) => {
             PointEffectMover pointEffect = Instantiate(beamPointPrefab);
             pointEffect.transform.position =
                 pos_point.Item1 + new Vector3(i * 0.03f, i * 0.1f, 0);
-            pointEffect.Init(pos_point.Item2, colors.First());
+            pointEffect.Init(pos_point.Item2, link.Colors.First());
         });
 
-        foreach(NodeMover linkedNode in selectedNodes){
+        foreach(NodeMover linkedNode in link.Nodes){
             //黒の存在を無視しているがまあ黒の方でlastは鳴るのでこれでいいかな……
-            RemoveNode(linkedNode, selectedNodes.Count >= nodes.Count);
+            RemoveNode(linkedNode, link.Count >= nodes.Count);
         }
-        selectedNodes.Clear();
-        colors.Clear();
-        foreach(Beam beam in beams){
-            beam.Vanish();
-        }
-        beams.Clear();
+        link.OnClear();
+        link = new Link();
 
         if(nodes.All(nd => nd.Type == NodeType.Black)){
             var blacks = nodes.Where(nd => nd.Type == NodeType.Black).ToArray();
@@ -175,25 +158,21 @@ public class BoardManager : MonoBehaviour
     }
 
     public void CancelSelect(){
-        if(selectedNodes.Count > 0) lineDeletedSound.Play(1);
-        foreach(NodeMover node in selectedNodes){
+        if(link.Count > 0) lineDeletedSound.Play(1);
+        foreach(NodeMover node in link.Nodes){
             node.UnSelect();
         }
-        selectedNodes.Clear();
-        colors.Clear();
-        foreach(Beam beam in beams){
-            beam.Vanish();
-        }
-        beams.Clear();
+        link.OnClear();
+        link = new Link();
     }
 
     void Update()
     {
 
-        if(beams.Count > 0){
+        if(link.Count > 0){
             (Vector3 target, bool canReachNode) = CalcBeamTarget();
             if(target != posInvalid){
-                beams.Last().LineRenderer.SetPosition(1, target);
+                link.CurrentBeam.LineRenderer.SetPosition(1, target);
                 this.BeamReachesNode = canReachNode;
             }else{
                 this.BeamReachesNode = false;
@@ -204,7 +183,7 @@ public class BoardManager : MonoBehaviour
     static readonly Vector3 posInvalid = new Vector3(99, 99, 99);
 
     (Vector3 target, bool canReachNode) CalcBeamTarget(){
-        Beam currentBeam = beams.Last();
+        Beam currentBeam = link.CurrentBeam;
         Vector3 origin = currentBeam.LineRenderer.GetPosition(0);
         var target = ClickRayCaster.Instance.HitFirst;
 
@@ -221,7 +200,7 @@ public class BoardManager : MonoBehaviour
     }
 
     public void KillAll(){
-        beams.ForEach(bm => bm.Vanish());
+        link.OnClear();
         Destroy(gameObject);
     }
 }

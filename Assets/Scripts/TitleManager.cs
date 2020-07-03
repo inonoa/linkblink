@@ -31,9 +31,7 @@ public class TitleManager : MonoBehaviour
             dict => {
                 foreach(NewElement newElem in NewElement.Elements){
                     if(dict.ContainsKey(newElem.ElementName + "NewElement")){
-                        print(newElem.ElementName);
                         if(dict[newElem.ElementName + "NewElement"]){
-                            print(newElem.ElementName + " set found");
                             newElem.SetFound();
                         }
                     }
