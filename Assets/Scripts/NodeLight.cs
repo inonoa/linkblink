@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeLight : MonoBehaviour
+public class NodeLight : MonoBehaviour, INodeLight
 {
     [SerializeField] Shader shaderOpaque;
     [SerializeField] Shader shaderTransparent;

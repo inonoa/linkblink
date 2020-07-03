@@ -44,11 +44,11 @@ public class NodeMover : MonoBehaviour, IVanish
     public BeamTarget BeamTarget => _BeamTarget;
     [SerializeField] NodeSoundGroup soundGroup;
 
-    NodeLight nodeLight;
+    INodeLight nodeLight;
 
     void Start()
     {
-        nodeLight = GetComponent<NodeLight>();
+        nodeLight = GetComponent<INodeLight>();
         DOVirtual.DelayedCall(
             UnityEngine.Random.Range(0, 0.3f),
             () => soundGroup.OnAwakeSound.Play(UnityEngine.Random.Range(0.2f, 0.6f))
