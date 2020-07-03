@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6873e480eee5e4143a7f72cc39b04159, type: 3}
+  m_Name: NodeSoundGroup
+  m_EditorClassIdentifier: 
+  _OnMouseOnSound:
+    clip: {fileID: 8300000, guid: bed1ed81659ba7d4aa473678b47111be, type: 3}
+    volume: 0.573
+  _OnSelectedSounds:
+  - clip: {fileID: 8300000, guid: 564dd4897bf15fa46bb89be6019b75e1, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 157272c8108486042863e8b61d32ba5f, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 11cee69740ae52c4b8136bb24c328af3, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 5ed3afe08a3c79744be93238253b0125, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 49bafc6f88571e844a5d10f3ad359e0c, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 846d1080b2162004abb0acc9b1668804, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 378e43d661d209b48aa19ec335432896, type: 3}
+    volume: 1
+  _OnVanishLastSound:
+    clip: {fileID: 8300000, guid: e63783ab0d2ae8844b1e6e30e80b935d, type: 3}
+    volume: 1
+  _OnVanishSound:
+    clip: {fileID: 8300000, guid: d90610634d5ff3f4aadab4a982bed9f5, type: 3}
+    volume: 1
+  _OnAwakeSound:
+    clip: {fileID: 8300000, guid: 4254bc85df750aa4db91bf25bf4f4622, type: 3}
+    volume: 1

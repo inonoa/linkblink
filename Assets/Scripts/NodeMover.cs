@@ -42,11 +42,7 @@ public class NodeMover : MonoBehaviour, IVanish
     public MouseSensor Sensor => _Sensor;
     [SerializeField] BeamTarget _BeamTarget;
     public BeamTarget BeamTarget => _BeamTarget;
-    [SerializeField] SoundAndVolume onMouseOnSound;
-    [SerializeField] SoundAndVolume[] onSelectedSounds;
-    [SerializeField] SoundAndVolume onVanishLastSound;
-    [SerializeField] SoundAndVolume onVanishSound;
-    [SerializeField] SoundAndVolume onAwakeSound;
+    [SerializeField] NodeSoundGroup soundGroup;
 
     NodeLight nodeLight;
 
@@ -55,7 +51,7 @@ public class NodeMover : MonoBehaviour, IVanish
         nodeLight = GetComponent<NodeLight>();
         DOVirtual.DelayedCall(
             UnityEngine.Random.Range(0, 0.3f),
-            () => onAwakeSound.Play(UnityEngine.Random.Range(0.2f, 0.6f))
+            () => soundGroup.OnAwakeSound.Play(UnityEngine.Random.Range(0.2f, 0.6f))
         );
         Sensor.OnMouseOn += OnMouseOn;
         Sensor.OnMouseOut += OnMouseOut;
@@ -69,7 +65,7 @@ public class NodeMover : MonoBehaviour, IVanish
             State = EState.MouseOn;
 
             nodeLight.Light();
-            if(Type != NodeType.Black) onMouseOnSound.Play();
+            if(Type != NodeType.Black) soundGroup.OnMouseOnSound.Play();
         }
     }
 
@@ -86,7 +82,7 @@ public class NodeMover : MonoBehaviour, IVanish
     public void OnSelected(int num_0_idx){
         if(State == EState.MouseOn){
             State = EState.Selected;
-            onSelectedSounds[Mathf.Min(num_0_idx, onSelectedSounds.Length - 1)].Play();
+            soundGroup.OnSelectedSounds[Mathf.Min(num_0_idx, soundGroup.OnSelectedSounds.Count - 1)].Play();
         }
     }
 
@@ -101,7 +97,7 @@ public class NodeMover : MonoBehaviour, IVanish
         nodeLight.Vanish();
         DOVirtual.DelayedCall(
             UnityEngine.Random.Range(0, 0.3f),
-            () => (isLast ? onVanishLastSound : onVanishSound).Play(UnityEngine.Random.Range(0.2f, 1))
+            () => (isLast ? soundGroup.OnVanishLastSound : soundGroup.OnVanishSound).Play(UnityEngine.Random.Range(0.2f, 1))
         );
     }
     public void Vanish() => Vanish(false);
