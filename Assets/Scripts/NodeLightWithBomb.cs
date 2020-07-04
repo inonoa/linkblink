@@ -79,16 +79,18 @@ public class NodeLightWithBomb : MonoBehaviour, INodeLight
 
     IEnumerator lightCoroutine;
     IEnumerator LightCor(){
-        float emit;
-        while((emit = mat.GetFloat(_Emit)) <= defaultEmission * lightRate){
-            mat.SetFloat(_Emit,
-                emit + lightRate * (Time.deltaTime / lightSec) * defaultEmission
-            );
-            bombMat.SetFloat(_Light,
-                bombMat.GetFloat(_Light) + bombLightRate * (Time.deltaTime / lightSec) * bombDefaultLight
-            );
+        float emitDst = defaultEmission * lightRate;
+        float bombLightDst = bombDefaultLight * bombLightRate;
+
+        float time = 0;
+        while((time += Time.deltaTime) <= lightSec){
+            mat.SetFloat(_Emit, Mathf.Lerp(defaultEmission, emitDst, time / lightSec));
+            bombMat.SetFloat(_Light, Mathf.Lerp(bombDefaultLight, bombLightDst, time / lightSec));
             yield return null;
         }
+
+        mat.SetFloat(_Emit, emitDst);
+        bombMat.SetFloat(_Light, bombLightDst);
     }
 
     public void Light(){
@@ -100,16 +102,18 @@ public class NodeLightWithBomb : MonoBehaviour, INodeLight
 
     IEnumerator unlightCoroutine;
     IEnumerator UnLightCor(){
-        float emit;
-        while((emit = mat.GetFloat(_Emit)) >= defaultEmission){
-            mat.SetFloat(_Emit,
-                emit - lightRate * (Time.deltaTime / lightSec) * defaultEmission
-            );
-            bombMat.SetFloat(_Light,
-                bombMat.GetFloat(_Light) - bombLightRate * (Time.deltaTime / lightSec) * bombDefaultLight
-            );
+        float emitStart = defaultEmission * lightRate;
+        float bombLightStart = bombDefaultLight * bombLightRate;
+
+        float time = lightSec;
+        while((time -= Time.deltaTime) >= 0){
+            mat.SetFloat(_Emit, Mathf.Lerp(defaultEmission, emitStart, time / lightSec));
+            bombMat.SetFloat(_Light, Mathf.Lerp(bombDefaultLight, bombLightStart, time / lightSec));
             yield return null;
         }
+
+        mat.SetFloat(_Emit, defaultEmission);
+        bombMat.SetFloat(_Light, bombDefaultLight);
     }
 
     public void UnLight(){
