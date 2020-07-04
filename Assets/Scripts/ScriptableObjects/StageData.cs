@@ -18,7 +18,7 @@ public class StageData : ScriptableObject{
     public IReadOnlyList<ElementTag> NewElementTags => newElementTags;
     [SerializeField] Vector2 _DistanceUnit = new Vector2();
     public Vector2 DistanceUnit => _DistanceUnit;
-    [SerializeField] float _BombRadius = 0;
+    [SerializeField] float _BombRadius = 1.02f;
     public float BombRadius => _BombRadius;
     [SerializeField] [ListDrawerSettings( Expanded = true )] NodeRow[] _Rows;
     public IReadOnlyList<NodeRow> Rows => _Rows;
