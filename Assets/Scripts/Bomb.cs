@@ -16,6 +16,11 @@ public class Bomb : MonoBehaviour
         radius = transform.localScale.x / 4;
     }
 
+    public void SetRadius(float rad){
+        radius = rad;
+        transform.localScale = new Vector3(rad * 4, rad * 4, rad * 4);
+    }
+
     public void Explode(NodeMover[] nodes){
 
         foreach(NodeMover node in nodes){

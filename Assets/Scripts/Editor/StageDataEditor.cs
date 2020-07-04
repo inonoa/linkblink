@@ -22,6 +22,8 @@ public class StageDataEditor : Editor
         EditorGUILayout.PropertyField(tags);
         var unit = serializedObject.FindProperty("_DistanceUnit");
         EditorGUILayout.PropertyField(unit);
+        var bRad = serializedObject.FindProperty("_BombRadius");
+        EditorGUILayout.PropertyField(bRad);
 
         EditorGUILayout.Space(30);
 

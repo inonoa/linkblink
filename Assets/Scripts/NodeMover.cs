@@ -47,7 +47,8 @@ public class NodeMover : MonoBehaviour, IVanish
 
     INodeLight nodeLight;
 
-    Bomb bomb;
+    [SerializeField] Bomb _Bomb;
+    public Bomb Bomb => _Bomb;
     Func<NodeMover[]> nodesGetter = () => new NodeMover[0]{};
 
     public void Init(Func<NodeMover[]> nodesGetter){
@@ -57,7 +58,6 @@ public class NodeMover : MonoBehaviour, IVanish
     void Start()
     {
         nodeLight = GetComponent<INodeLight>();
-        bomb = GetComponentInChildren<Bomb>();
         DOVirtual.DelayedCall(
             UnityEngine.Random.Range(0, 0.3f),
             () => soundGroup.OnAwakeSound.Play(UnityEngine.Random.Range(0.2f, 0.6f))
@@ -74,7 +74,7 @@ public class NodeMover : MonoBehaviour, IVanish
             State = EState.MouseOn;
 
             LightBy(this);
-            bomb?.LitNearNodes(nodesGetter());
+            _Bomb?.LitNearNodes(nodesGetter());
             if(Type != NodeType.Black) soundGroup.OnMouseOnSound.Play();
         }
     }
@@ -86,7 +86,7 @@ public class NodeMover : MonoBehaviour, IVanish
             State = EState.Default;
 
             UnLightBy(this);
-            bomb?.UnlitNearNodes(nodesGetter());
+            _Bomb?.UnlitNearNodes(nodesGetter());
         }
     }
 
@@ -127,7 +127,7 @@ public class NodeMover : MonoBehaviour, IVanish
             UnityEngine.Random.Range(0, 0.3f),
             () => (isLast ? soundGroup.OnVanishLastSound : soundGroup.OnVanishSound).Play(UnityEngine.Random.Range(0.2f, 1))
         );
-        bomb?.Explode(nodesGetter());
+        _Bomb?.Explode(nodesGetter());
     }
     public void Vanish() => Vanish(false);
 

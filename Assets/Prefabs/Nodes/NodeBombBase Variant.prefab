@@ -125,6 +125,11 @@ PrefabInstance:
       propertyPath: _Type
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 2207633172127509767, guid: c5313c41d55f1964c81895a277215746,
+        type: 3}
+      propertyPath: _Bomb
+      value: 
+      objectReference: {fileID: 142822355}
     - target: {fileID: 2207633172127509888, guid: c5313c41d55f1964c81895a277215746,
         type: 3}
       propertyPath: m_LocalPosition.x

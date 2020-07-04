@@ -16,6 +16,7 @@ MonoBehaviour:
   difficulty: 0
   newElementTags: 
   _DistanceUnit: {x: 2, y: 2}
+  _BombRadius: 1.1
   _Rows:
   - _Nodes: 000000000300000000000000
   - _Nodes: 030000000200000003000000
