@@ -31,7 +31,9 @@ public class Bomb : MonoBehaviour
     public void LitNearNodes(NodeMover[] nodes){
         foreach(NodeMover node in nodes){
             if(Vector3.Distance(transform.position, node.transform.position) < radius){
-                //光らせたい
+                if(blinks.ContainsKey(node)) StopCoroutine(blinks[node]);
+                blinks[node] = Blink(node);
+                StartCoroutine(blinks[node]);
                 node.LightBy(this);
             }
         }
@@ -39,9 +41,21 @@ public class Bomb : MonoBehaviour
     public void UnlitNearNodes(NodeMover[] nodes){
         foreach(NodeMover node in nodes){
             if(Vector3.Distance(transform.position, node.transform.position) < radius){
-                //光らせたい
+                if(blinks.ContainsKey(node)) StopCoroutine(blinks[node]);
                 node.UnLightBy(this);
             }
+        }
+    }
+
+    Dictionary<NodeMover, IEnumerator> blinks = new Dictionary<NodeMover, IEnumerator>();
+    IEnumerator Blink(NodeMover node){
+        
+        while(node.isActiveAndEnabled && node.IsLive){
+            node.LightBy(this);
+            yield return new WaitForSeconds(0.3f);
+            if((!node.isActiveAndEnabled) || (!node.IsLive)) yield break;
+            node.UnLightBy(this);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 }

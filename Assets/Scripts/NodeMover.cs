@@ -33,6 +33,7 @@ public class NodeMover : MonoBehaviour, IVanish
     }
 
     public bool CanBeSelected => State == EState.Default || State == EState.MouseOn;
+    public bool IsLive => State != EState.Vanishing;
 
     public event EventHandler Clicked;
     public event EventHandler ClickedSecondTime;
