@@ -27,6 +27,7 @@ public class Bomb : MonoBehaviour
         }
     }
 
+    //このふたつここにあるべきじゃない気がする
     public void LitNearNodes(NodeMover[] nodes){
         foreach(NodeMover node in nodes){
             if(Vector3.Distance(transform.position, node.transform.position) < radius){

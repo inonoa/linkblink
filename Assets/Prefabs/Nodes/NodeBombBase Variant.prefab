@@ -92,9 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e790ca67d37181941829532e2a3678a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodesTmp:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1739982776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,11 +105,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomb: {fileID: 142822356}
-  shaderOpaque: {fileID: 4800000, guid: 881d0bb1d409a2a4a8b8dc8813b840a0, type: 3}
-  shaderTransparent: {fileID: 4800000, guid: e1a2a4f9b098f9c408bd3ae1388af1e0, type: 3}
-  lightRate: 2
   bombLightRate: 2
-  lightSec: 0.3
+  bombLightSec: 0.3
+  core:
+    shaderOpaque: {fileID: 4800000, guid: 881d0bb1d409a2a4a8b8dc8813b840a0, type: 3}
+    shaderTransparent: {fileID: 4800000, guid: e1a2a4f9b098f9c408bd3ae1388af1e0, type: 3}
+    alwaysTransparent: 0
+    lightRate: 2
+    lightSec: 0.3
 --- !u!1001 &4114005169019028839
 PrefabInstance:
   m_ObjectHideFlags: 0
