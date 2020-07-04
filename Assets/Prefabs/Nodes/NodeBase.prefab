@@ -101,6 +101,7 @@ MonoBehaviour:
   _Sensor: {fileID: 9148817975472506013}
   _BeamTarget: {fileID: 381126792831723752}
   soundGroup: {fileID: 11400000, guid: 5d4bdd7ccc9b76143a15a9370ceeb3b2, type: 2}
+  _Bomb: {fileID: 0}
 --- !u!135 &2207633172127509989
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -139,11 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd73407df67edf4983323f9509b06f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shaderOpaque: {fileID: 4800000, guid: 881d0bb1d409a2a4a8b8dc8813b840a0, type: 3}
-  shaderTransparent: {fileID: 4800000, guid: e1a2a4f9b098f9c408bd3ae1388af1e0, type: 3}
-  alwaysTransparent: 0
-  lightRate: 2
-  lightSec: 0.3
+  core:
+    shaderOpaque: {fileID: 4800000, guid: 881d0bb1d409a2a4a8b8dc8813b840a0, type: 3}
+    shaderTransparent: {fileID: 4800000, guid: e1a2a4f9b098f9c408bd3ae1388af1e0, type: 3}
+    alwaysTransparent: 0
+    lightRate: 2
+    lightSec: 0.3
 --- !u!114 &381126792831723752
 MonoBehaviour:
   m_ObjectHideFlags: 0

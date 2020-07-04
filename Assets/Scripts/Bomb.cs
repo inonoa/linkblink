@@ -6,9 +6,6 @@ using Sirenix.OdinInspector;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] NodeMover[] nodesTmp;
-    [Button] void ExplodeTest() => Explode(nodesTmp);
-
     float radius;
 
     void Start()
