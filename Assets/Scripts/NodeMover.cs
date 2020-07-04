@@ -116,6 +116,7 @@ public class NodeMover : MonoBehaviour, IVanish
         State = EState.Default;
 
         UnLightBy(this);
+        _Bomb?.UnlitNearNodes(nodesGetter());
     }
 
     [Button]
