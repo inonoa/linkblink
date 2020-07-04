@@ -20,8 +20,24 @@ public class Bomb : MonoBehaviour
 
         foreach(NodeMover node in nodes){
             if(Vector3.Distance(transform.position, node.transform.position) < radius){
-                //Boardに通知しないといけなそう
                 node.DieSelf();
+            }
+        }
+    }
+
+    public void LitNearNodes(NodeMover[] nodes){
+        foreach(NodeMover node in nodes){
+            if(Vector3.Distance(transform.position, node.transform.position) < radius){
+                //光らせたい
+                node.LightBy(this);
+            }
+        }
+    }
+    public void UnlitNearNodes(NodeMover[] nodes){
+        foreach(NodeMover node in nodes){
+            if(Vector3.Distance(transform.position, node.transform.position) < radius){
+                //光らせたい
+                node.UnLightBy(this);
             }
         }
     }

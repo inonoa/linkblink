@@ -73,7 +73,8 @@ public class NodeMover : MonoBehaviour, IVanish
         if(State == EState.Default){
             State = EState.MouseOn;
 
-            nodeLight.Light();
+            LightBy(this);
+            bomb?.LitNearNodes(nodesGetter());
             if(Type != NodeType.Black) soundGroup.OnMouseOnSound.Play();
         }
     }
@@ -84,7 +85,22 @@ public class NodeMover : MonoBehaviour, IVanish
         if(State == EState.MouseOn){
             State = EState.Default;
 
-            nodeLight.UnLight();
+            UnLightBy(this);
+            bomb?.UnlitNearNodes(nodesGetter());
+        }
+    }
+
+    HashSet<object> lightBy = new HashSet<object>();
+    public void LightBy(object lighter){
+
+        if(lightBy.Count == 0) nodeLight.Light();
+        lightBy.Add(lighter);
+    }
+    public void UnLightBy(object unlighter){
+
+        if(lightBy.Contains(unlighter)){
+            lightBy.Remove(unlighter);
+            if(lightBy.Count == 0) nodeLight.UnLight();
         }
     }
 
@@ -98,7 +114,7 @@ public class NodeMover : MonoBehaviour, IVanish
     public void UnSelect(){
         State = EState.Default;
 
-        nodeLight.UnLight();
+        UnLightBy(this);
     }
 
     [Button]

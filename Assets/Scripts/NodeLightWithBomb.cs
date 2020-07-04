@@ -57,6 +57,7 @@ public class NodeLightWithBomb : MonoBehaviour, INodeLight
         mat.ChangeRenderMode(RenderMode.Transparent);
 
         mat.SetFloat(_Emit, 0);
+        bombMat.SetFloat(_Light, bombDefaultLight);
 
         float time = 0;
         while((time += Time.deltaTime) < 1){
