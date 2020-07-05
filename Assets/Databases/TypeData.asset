@@ -119,10 +119,18 @@ MonoBehaviour:
     <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <PointTextColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
   - _Type: 13
-    <Prefab>k__BackingField: {fileID: 2861183565126133856, guid: fecddfce41d1e5c48bc7da499d8d1635,
+    <Prefab>k__BackingField: {fileID: 6350467894735805268, guid: 81a65f5dba8aac44596789863afd6a7f,
       type: 3}
     <EditorColor>k__BackingField: {r: 0, g: 0.4716981, b: 0.45341602, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0.9999995, b: 1, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <PointTextColor>k__BackingField: {r: 0.11614456, g: 0.8289374, b: 0.8490566, a: 1}
+  - _Type: 14
+    <Prefab>k__BackingField: {fileID: 3729022334464041931, guid: 48f542aa8952a114ead91e4703c8b5e2,
+      type: 3}
+    <EditorColor>k__BackingField: {r: 0.6132076, g: 0.13594696, b: 0.5122487, a: 1}
+    <BeamColor>k__BackingField: {r: 1, g: 0, b: 1, a: 1}
+    <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <PointTextColor>k__BackingField: {r: 0.7264151, g: 0.09251513, b: 0.7264151, a: 1}

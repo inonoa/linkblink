@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum NodeType{
-    None, Cyan, Magenta, Yellow, Green, CyanMagenta, Black, AllColor, CyanYellow, CyanGreen, MagentaYellow, MagentaGreen, YellowGreen, BombCyan
+    None,
+    Cyan, Magenta, Yellow, Green,
+    CyanMagenta, Black, AllColor, CyanYellow, CyanGreen, MagentaYellow, MagentaGreen, YellowGreen,
+    BombCyan, BombMagenta
 }
 
 public enum NodeColor{
@@ -38,6 +41,7 @@ public static class ColorTypeExtension{
             case NodeType.YellowGreen: return new NodeColor[]{ NodeColor.Yellow, NodeColor.Green };
 
             case NodeType.BombCyan: return new NodeColor[]{ NodeColor.Cyan };
+            case NodeType.BombMagenta: return new NodeColor[]{ NodeColor.Magenta };
 
             case NodeType.Black: return new NodeColor[]{};
             case NodeType.AllColor: return Enum.GetValues(typeof(NodeColor)) as NodeColor[];
@@ -53,5 +57,9 @@ public static class ColorTypeExtension{
                || type == NodeType.MagentaYellow
                || type == NodeType.MagentaGreen
                || type == NodeType.YellowGreen;
+    }
+
+    public static bool HasBomb(this NodeType type){
+        return type == NodeType.BombCyan || type == NodeType.BombMagenta;
     }
 }

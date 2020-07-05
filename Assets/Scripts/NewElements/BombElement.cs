@@ -9,6 +9,6 @@ public class BombElement : NewElement
 {
 
     protected override bool ExistIn(StageData data){
-        return data.Rows.Any(row => row.Nodes.Contains(NodeType.BombCyan));
+        return data.Rows.Any(row => row.Nodes.Any(node => node.HasBomb()));
     }
 }
