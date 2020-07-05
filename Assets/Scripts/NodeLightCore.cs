@@ -20,7 +20,8 @@ public class NodeLightCore
         this.mat = mat;
         defaultEmission = mat.GetFloat(_Emit);
         this.mono = mono;
-        mono.StartCoroutine(FadeIn());
+        fadeInCoroutine = FadeIn();
+        mono.StartCoroutine(fadeInCoroutine);
     }
 
     [SerializeField] float lightRate = 2;
@@ -41,9 +42,11 @@ public class NodeLightCore
     }
     
     public void Vanish(){
+        if(fadeInCoroutine != null) mono.StopCoroutine(fadeInCoroutine);
         mono.StartCoroutine(VanishCoroutine());
     }
 
+    IEnumerator fadeInCoroutine;
     IEnumerator FadeIn(){
         mat.shader = shaderTransparent;
         mat.ChangeRenderMode(RenderMode.Transparent);

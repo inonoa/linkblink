@@ -135,8 +135,10 @@ public class NodeMover : MonoBehaviour, IVanish
 
     public event EventHandler DiedSelf;
     public void DieSelf(){
-        Vanish();
-        DiedSelf?.Invoke(this, EventArgs.Empty);
+        if(IsLive){
+            Vanish();
+            DiedSelf?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     void Update(){
