@@ -26,7 +26,7 @@ MonoBehaviour:
     <EditorColor>k__BackingField: {r: 0, g: 0.6792453, b: 0.6792453, a: 1}
     <BeamColor>k__BackingField: {r: 0.097232126, g: 0.8962264, b: 0.8404003, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.044855822, g: 0.14985964, b: 0.1509434, a: 1}
     <PointTextColor>k__BackingField: {r: 0.08597365, g: 0.8679245, b: 0.8018867, a: 1}
   - _Type: 2
     <Prefab>k__BackingField: {fileID: 8269775412868560117, guid: 407f95deebb70ab4a9b26bd3c18d1042,
@@ -34,7 +34,7 @@ MonoBehaviour:
     <EditorColor>k__BackingField: {r: 0.6320754, g: 0, b: 0.6320754, a: 1}
     <BeamColor>k__BackingField: {r: 0.8962264, g: 0.097232126, b: 0.80917436, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.14150941, g: 0.042052325, b: 0.12956144, a: 1}
     <PointTextColor>k__BackingField: {r: 0.8773585, g: 0.11173906, b: 0.8172177, a: 1}
   - _Type: 3
     <Prefab>k__BackingField: {fileID: 113621398217128847, guid: bc12299f47d482b41a510d39363b15b7,
@@ -42,7 +42,7 @@ MonoBehaviour:
     <EditorColor>k__BackingField: {r: 0.6792453, g: 0.6792453, b: 0, a: 1}
     <BeamColor>k__BackingField: {r: 0.8679245, g: 0.8679077, b: 0.10234957, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.122641504, g: 0.120210566, b: 0.035288353, a: 1}
     <PointTextColor>k__BackingField: {r: 0.8615017, g: 0.8773585, b: 0.09518514, a: 1}
   - _Type: 4
     <Prefab>k__BackingField: {fileID: 8726828350880450031, guid: efa065a2b3933be44b3441558ff4f0eb,
@@ -50,56 +50,56 @@ MonoBehaviour:
     <EditorColor>k__BackingField: {r: 0, g: 0.5471698, b: 0, a: 1}
     <BeamColor>k__BackingField: {r: 0.15210716, g: 0.8867924, b: 0.12130654, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.037683092, g: 0.122641504, b: 0.036445353, a: 1}
     <PointTextColor>k__BackingField: {r: 0.09825563, g: 0.9056604, b: 0.17137031,
       a: 1}
   - _Type: 5
     <Prefab>k__BackingField: {fileID: 4985672679352648586, guid: 251d0e27ee9773a44963345b1a4a75ea,
       type: 3}
     <EditorColor>k__BackingField: {r: 0.7700736, g: 0.3160377, b: 1, a: 1}
-    <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamColor>k__BackingField: {r: 0.099012084, g: 0.8396226, b: 0.81881887, a: 1}
+    <BeamColor2>k__BackingField: {r: 0.875548, g: 0.12967247, b: 0.8867924, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.10804095, g: 0.042052325, b: 0.14150941, a: 1}
     <PointTextColor>k__BackingField: {r: 0.7928543, g: 0, b: 1, a: 1}
   - _Type: 8
     <Prefab>k__BackingField: {fileID: 8635715038427921371, guid: cef286a236da24543aed163d209d19f9,
       type: 3}
     <EditorColor>k__BackingField: {r: 0.45612317, g: 0.7735849, b: 0.47353053, a: 1}
-    <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamColor>k__BackingField: {r: 0.09620863, g: 0.86208665, b: 0.8867924, a: 1}
+    <BeamColor2>k__BackingField: {r: 0.8584906, g: 0.8214037, b: 0.10933607, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.044855822, g: 0.1509434, b: 0.055551097, a: 1}
     <PointTextColor>k__BackingField: {r: 0.26633143, g: 0.8962264, b: 0.3676086, a: 1}
   - _Type: 9
     <Prefab>k__BackingField: {fileID: 6231865109812699543, guid: 2b5f3848b9efcd948a1c662096c1a7ba,
       type: 3}
     <EditorColor>k__BackingField: {r: 0.4542987, g: 0.7830189, b: 0.6367444, a: 1}
-    <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamColor>k__BackingField: {r: 0.108134575, g: 0.8490566, b: 0.8254101, a: 1}
+    <BeamColor2>k__BackingField: {r: 0.12415449, g: 0.8490566, b: 0.21476726, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.03675686, g: 0.13207549, b: 0.082339175, a: 1}
     <PointTextColor>k__BackingField: {r: 0.35617658, g: 0.8679245, b: 0.6618989, a: 1}
   - _Type: 10
     <Prefab>k__BackingField: {fileID: 1219118475520598600, guid: f44b6af8a7b61f34d9a79cb9f0f0e1f5,
       type: 3}
     <EditorColor>k__BackingField: {r: 1, g: 0.6824282, b: 0.5613208, a: 1}
-    <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamColor>k__BackingField: {r: 0.8301887, g: 0.121395506, b: 0.8301887, a: 1}
+    <BeamColor2>k__BackingField: {r: 0.8396226, g: 0.82822865, b: 0.099012084, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.16981131, g: 0.06238624, b: 0.044054825, a: 1}
     <PointTextColor>k__BackingField: {r: 0.8867924, g: 0.590269, b: 0.3973834, a: 1}
   - _Type: 11
     <Prefab>k__BackingField: {fileID: 5882472816770471104, guid: e18af986a53be6b4684369f3452619f6,
       type: 3}
     <EditorColor>k__BackingField: {r: 0.7830189, g: 0.66647303, b: 0.41736382, a: 1}
-    <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamColor>k__BackingField: {r: 0.8679245, g: 0.12691349, b: 0.8190256, a: 1}
+    <BeamColor2>k__BackingField: {r: 0.09211465, g: 0.8490566, b: 0.14372428, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.1509434, g: 0.121579506, b: 0.040583838, a: 1}
     <PointTextColor>k__BackingField: {r: 0.7830189, g: 0.6474049, b: 0.23268957, a: 1}
   - _Type: 12
     <Prefab>k__BackingField: {fileID: 8276067466235144536, guid: 318e85307fed0ab4c869a22246a8dafd,
       type: 3}
     <EditorColor>k__BackingField: {r: 0.8487269, g: 0.9056604, b: 0.5767177, a: 1}
-    <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamColor>k__BackingField: {r: 0.8207547, g: 0.80691457, b: 0.10453009, a: 1}
+    <BeamColor2>k__BackingField: {r: 0.09518514, g: 0.8773585, b: 0.10680164, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.12552485, g: 0.14150941, b: 0.04739231, a: 1}
     <PointTextColor>k__BackingField: {r: 0.7700625, g: 0.8490566, b: 0.3964934, a: 1}
   - _Type: 7
     <Prefab>k__BackingField: {fileID: 3673274535186880971, guid: 9edd010d962135f479a037244015582c,
@@ -107,7 +107,7 @@ MonoBehaviour:
     <EditorColor>k__BackingField: {r: 1, g: 0.8632076, b: 0.9650742, a: 1}
     <BeamColor>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
     <PointTextColor>k__BackingField: {r: 0.8962264, g: 0.58762014, b: 0.7698439, a: 1}
   - _Type: 6
     <Prefab>k__BackingField: {fileID: 801209642118604372, guid: d4fcea966e23497438da3e1270980607,
@@ -122,15 +122,15 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 6350467894735805268, guid: 81a65f5dba8aac44596789863afd6a7f,
       type: 3}
     <EditorColor>k__BackingField: {r: 0, g: 0.4716981, b: 0.45341602, a: 1}
-    <BeamColor>k__BackingField: {r: 0, g: 0.9999995, b: 1, a: 1}
+    <BeamColor>k__BackingField: {r: 0.10234957, g: 0.8679245, b: 0.8679245, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.031505868, g: 0.11320752, b: 0.108362846, a: 1}
     <PointTextColor>k__BackingField: {r: 0.11614456, g: 0.8289374, b: 0.8490566, a: 1}
   - _Type: 14
     <Prefab>k__BackingField: {fileID: 3729022334464041931, guid: 48f542aa8952a114ead91e4703c8b5e2,
       type: 3}
     <EditorColor>k__BackingField: {r: 0.6132076, g: 0.13594696, b: 0.5122487, a: 1}
-    <BeamColor>k__BackingField: {r: 1, g: 0, b: 1, a: 1}
+    <BeamColor>k__BackingField: {r: 0.8679245, g: 0.118725546, b: 0.8679245, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
-    <BeamEmit>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+    <BeamEmit>k__BackingField: {r: 0.14150941, g: 0.043387324, b: 0.13709018, a: 1}
     <PointTextColor>k__BackingField: {r: 0.7264151, g: 0.09251513, b: 0.7264151, a: 1}

@@ -25,48 +25,25 @@ public class Beam : MonoBehaviour, IVanish
     [SerializeField] Color allColorEmit;
 
     public void SetColor(NodeType type){
-        switch(type){
 
-            case NodeType.Cyan: {
-                LineRenderer.material.shader = oneOrTwoColorShader;
-                LineRenderer.material.SetColor("_TintColor", new Color(0, 0.8f, 0.8f, 1f));
-                LineRenderer.material.SetColor("_TintColor2", new Color(0, 0, 0, 0));
-                LineRenderer.material.SetColor("_EmitColor", cyanEmit);
-                break;
-            }
-            case NodeType.Magenta: {
-                LineRenderer.material.shader = oneOrTwoColorShader;
-                LineRenderer.material.SetColor("_TintColor", new Color(0.8f, 0, 0.8f, 1f));
-                LineRenderer.material.SetColor("_TintColor2", new Color(0, 0, 0, 0));
-                LineRenderer.material.SetColor("_EmitColor", magentaEmit);
-                break;
-            }
-            case NodeType.Yellow: {
-                LineRenderer.material.shader = oneOrTwoColorShader;
-                LineRenderer.material.SetColor("_TintColor", new Color(0.8f, 0.8f, 0, 1f));
-                LineRenderer.material.SetColor("_TintColor2", new Color(0, 0, 0, 0));
-                LineRenderer.material.SetColor("_EmitColor", yellowEmit);
-                break;
-            }
-            case NodeType.Green: {
-                LineRenderer.material.shader = oneOrTwoColorShader;
-                LineRenderer.material.SetColor("_TintColor", new Color(0.25f, 0.8f, 0.25f, 1));
-                LineRenderer.material.SetColor("_TintColor2", new Color(0, 0, 0, 0));
-                LineRenderer.material.SetColor("_EmitColor", greenEmit);
-                break;
-            }
-            case NodeType.CyanMagenta: {
-                LineRenderer.material.shader = oneOrTwoColorShader;
-                LineRenderer.material.SetColor("_TintColor", new Color(0, 0.8f, 0.8f, 1));
-                LineRenderer.material.SetColor("_TintColor2", new Color(0.8f, 0, 0.8f, 1f));
-                LineRenderer.material.SetColor("_EmitColor", cyanMagentaEmit);
-                break;
-            }
-            case NodeType.AllColor: {
-                LineRenderer.material.shader = allColorShader;
-                LineRenderer.material.SetColor("_EmitColor", allColorEmit);
-                break;
-            }
+        NodeTypeData data = TypeDataHolder.Instance[type];
+
+        //不格好
+        if(type.HasTwoColors()){
+            LineRenderer.material.shader = oneOrTwoColorShader;
+            LineRenderer.material.SetColor("_TintColor", data.BeamColor);
+            LineRenderer.material.SetColor("_TintColor2", data.BeamColor2);
+            LineRenderer.material.SetColor("_EmitColor", data.BeamEmit);
+
+        }else if(type == NodeType.AllColor){
+            LineRenderer.material.shader = allColorShader;
+            LineRenderer.material.SetColor("_EmitColor", data.BeamEmit);
+
+        }else{
+            LineRenderer.material.shader = oneOrTwoColorShader;
+            LineRenderer.material.SetColor("_TintColor", data.BeamColor);
+            LineRenderer.material.SetColor("_TintColor2", new Color(0,0,0,0));
+            LineRenderer.material.SetColor("_EmitColor", data.BeamEmit);
         }
         Light();
     }
