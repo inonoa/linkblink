@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using DG.Tweening;
 
 public class Bomb : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Bomb : MonoBehaviour
 
         foreach(NodeMover node in nodes){
             if(Vector3.Distance(transform.position, node.transform.position) < radius){
-                node.DieSelf();
+                DOVirtual.DelayedCall(0.2f, node.DieSelf);
             }
         }
     }
