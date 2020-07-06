@@ -5,5 +5,5 @@ using UnityEngine;
 
 public enum ElementTag
 {
-    DifferentPath
+    DifferentPath, Yubaku
 }

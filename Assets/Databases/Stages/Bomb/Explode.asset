@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memo: 
   difficulty: 0
-  newElementTags: 
+  newElementTags: 01000000
   _DistanceUnit: {x: 0, y: 0}
   _BombRadius: 1.02
   _Rows:
