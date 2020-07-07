@@ -15,9 +15,9 @@ MonoBehaviour:
   _Name: Test
   memo: 
   _Stages:
+  - {fileID: 11400000, guid: 1979c85853c3d1144bf18366d96380ee, type: 2}
   - {fileID: 11400000, guid: 6b827b5747f0ced46a2a0d8577c62666, type: 2}
   - {fileID: 11400000, guid: 1d067c237afb5084995e723b42c09cd3, type: 2}
-  - {fileID: 11400000, guid: 1979c85853c3d1144bf18366d96380ee, type: 2}
   - {fileID: 11400000, guid: 82b9c2688b56206448127dfa6645f60d, type: 2}
   - {fileID: 11400000, guid: ada03cfb9889adc47853a0fd3319d520, type: 2}
   - {fileID: 11400000, guid: 181ebea2c5d1d094f8a45dd1977acbd9, type: 2}

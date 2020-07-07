@@ -38533,6 +38533,7 @@ MonoBehaviour:
     type: 3}
   rowPrefab: {fileID: 6955140410547315974, guid: b0cfbe4c29f49974586be34319376fe2,
     type: 3}
+  stageSizeDefault: {x: 11, y: 6}
 --- !u!1 &1955952940
 GameObject:
   m_ObjectHideFlags: 0

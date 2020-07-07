@@ -15,16 +15,27 @@ public class StageLoder : MonoBehaviour
 
         BoardManager board = Instantiate(boardPrefab);
 
+        Vector2Int numNodeGaps = new Vector2Int(
+            stage.Rows.Max(row => row.Nodes.Count()) - 1,
+            stage.Rows.Count - 1
+        );
+
         //ステージの実際のサイズ決定(todo: 横長だったらxをデフォルトに、そうじゃなかったらyをデフォルトに、とかしたい)
-        Vector2 actualSize = stageSizeDefault;
+        Vector2 actualSize;
         if(stage.DistanceUnit != Vector2.zero){
-            actualSize.x = (stage.Rows.Max(row => row.Nodes.Count()) - 1) * stage.DistanceUnit.x;
-            actualSize.y = (stage.Rows.Count - 1)                         * stage.DistanceUnit.y;
+            actualSize = numNodeGaps * stage.DistanceUnit;
+        }else{
+            if((float)numNodeGaps.x / numNodeGaps.y > stageSizeDefault.x / stageSizeDefault.y){
+                //横長の場合、横は目一杯広げてyはそれに合わせる
+                actualSize.x = stageSizeDefault.x;
+                actualSize.y = actualSize.x * ((float) numNodeGaps.y / numNodeGaps.x);
+            }else{
+                //縦長の場合、縦は目一杯広げてxはそれに合わせる
+                actualSize.y = stageSizeDefault.y;
+                actualSize.x = actualSize.y * ((float) numNodeGaps.x / numNodeGaps.y);
+            }
         }
-        Vector2 distanceUnit = actualSize / new Vector2Int(
-                                                stage.Rows.Max(row => row.Nodes.Count()) - 1,
-                                                stage.Rows.Count - 1
-                                            );
+        Vector2 distanceUnit = actualSize / numNodeGaps;
 
         for(int i = 0; i < stage.Rows.Count; i++){
             Transform row = Instantiate(rowPrefab, board.transform).transform;
