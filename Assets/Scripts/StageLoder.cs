@@ -20,9 +20,10 @@ public class StageLoder : MonoBehaviour
             stage.Rows.Count - 1
         );
 
-        //ステージの実際のサイズ決定(todo: 横長だったらxをデフォルトに、そうじゃなかったらyをデフォルトに、とかしたい)
+        //ステージの実際のサイズ決定
         Vector2 actualSize;
         if(stage.DistanceUnit != Vector2.zero){
+            //ステージのデータで決まってる場合それを使う
             actualSize = numNodeGaps * stage.DistanceUnit;
         }else{
             if((float)numNodeGaps.x / numNodeGaps.y > stageSizeDefault.x / stageSizeDefault.y){
