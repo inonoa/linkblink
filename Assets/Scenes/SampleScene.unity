@@ -38476,6 +38476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1933308821}
   - component: {fileID: 1933308820}
+  - component: {fileID: 1933308822}
   m_Layer: 0
   m_Name: StageWatcher
   m_TagString: Untagged
@@ -38501,10 +38502,6 @@ MonoBehaviour:
   stageUIsHolder: {fileID: 1861770876}
   resetButton: {fileID: 890745971}
   cancelButton: {fileID: 1143888224}
-  boardPrefab: {fileID: 841104176228835678, guid: 9c8fc9f832ac4714ca1411614392cd90,
-    type: 3}
-  rowPrefab: {fileID: 6955140410547315974, guid: b0cfbe4c29f49974586be34319376fe2,
-    type: 3}
   skyMover: {fileID: 963194230}
 --- !u!4 &1933308821
 Transform:
@@ -38520,6 +38517,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1933308822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933308819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41eb46fa9d7df6e4591da5ac1d397a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardPrefab: {fileID: 841104176228835678, guid: 9c8fc9f832ac4714ca1411614392cd90,
+    type: 3}
+  rowPrefab: {fileID: 6955140410547315974, guid: b0cfbe4c29f49974586be34319376fe2,
+    type: 3}
 --- !u!1 &1955952940
 GameObject:
   m_ObjectHideFlags: 0

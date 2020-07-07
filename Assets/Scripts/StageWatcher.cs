@@ -10,6 +10,8 @@ public class StageWatcher : MonoBehaviour
 {
     //なんかおかしくね？
     [SerializeField] ScoreManager scoreManager;
+    
+    StageLoder stageLoder;
 
     Sequence currentSequence;
     public int CurrentStageIndex{ get; private set; }
@@ -27,8 +29,6 @@ public class StageWatcher : MonoBehaviour
     [SerializeField] Button resetButton;
     [SerializeField] Button cancelButton;
     BoardManager currentBoard;
-    [SerializeField] BoardManager boardPrefab;
-    [SerializeField] GameObject rowPrefab;
     public PlayMode PlayMode{ get; private set; } = PlayMode.Sequence;
 
     [SerializeField] SkyMover skyMover;
@@ -43,6 +43,7 @@ public class StageWatcher : MonoBehaviour
 
 
     void Start(){
+        stageLoder = GetComponent<StageLoder>();
         resetButton.onClick.AddListener(() => {
             ResetStage();
         });
@@ -59,40 +60,6 @@ public class StageWatcher : MonoBehaviour
         if(AcceptsInput && Input.GetMouseButtonDown(1)){
             currentBoard.CancelSelect();
         }
-    }
-
-    BoardManager LoadBoard(StageData stage){
-
-        BoardManager board = Instantiate(boardPrefab);
-        if(stage.DistanceUnit == Vector2.zero){
-            board.NodeDistanceUnit = new Vector2(
-                6.0f / (stage.Rows[0].Nodes.Count - 1),
-                6.0f / (stage.Rows.Count - 1)
-            );
-        }else{
-            board.NodeDistanceUnit = stage.DistanceUnit;
-        }
-        board.ScoreManager = scoreManager;
-        for(int i = 0; i < stage.Rows.Count; i++){
-            Transform row = Instantiate(rowPrefab, board.transform).transform;
-
-            
-            row.position += new Vector3(0, (stage.Rows.Count / 2f - 0.5f - i) * board.NodeDistanceUnit.y, 0);
-
-            for(int j = 0; j < stage.Rows[i].Nodes.Count; j++){
-                
-                NodeType type = stage.Rows[i].Nodes[j];
-                if(type != NodeType.None){
-                    NodeMover node = Instantiate(TypeDataHolder.Instance[type].Prefab, row);
-                    node.transform.position += new Vector3((-stage.Rows[i].Nodes.Count / 2f + 0.5f + j) * board.NodeDistanceUnit.x, 0, 0);
-                    if(node.Bomb != null) node.Bomb.SetRadius(board.NodeDistanceUnit.y * stage.BombRadius);
-                }
-            }
-        }
-
-        CheckNewElements(stage);
-
-        return board;
     }
 
     void CheckNewElements(StageData stage){
@@ -136,7 +103,9 @@ public class StageWatcher : MonoBehaviour
     void StartStage(Stage stage){
         AcceptsInput = true;
 
-        currentBoard = LoadBoard(stage.data);
+        currentBoard = stageLoder.LoadBoard(stage.data);
+        currentBoard.ScoreManager = scoreManager;
+        CheckNewElements(stage.data);
         currentBoard.AllNodeVanished += (s, e) => {
             skyMover.Light();
             AcceptsInput = false;
