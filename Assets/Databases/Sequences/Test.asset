@@ -15,16 +15,16 @@ MonoBehaviour:
   _Name: Test
   memo: 
   _Stages:
+  - {fileID: 11400000, guid: 6b827b5747f0ced46a2a0d8577c62666, type: 2}
+  - {fileID: 11400000, guid: 1d067c237afb5084995e723b42c09cd3, type: 2}
+  - {fileID: 11400000, guid: 1979c85853c3d1144bf18366d96380ee, type: 2}
   - {fileID: 11400000, guid: 82b9c2688b56206448127dfa6645f60d, type: 2}
   - {fileID: 11400000, guid: ada03cfb9889adc47853a0fd3319d520, type: 2}
   - {fileID: 11400000, guid: 181ebea2c5d1d094f8a45dd1977acbd9, type: 2}
   - {fileID: 11400000, guid: 2f90be4b639d662418c5aaf330feda9d, type: 2}
-  - {fileID: 11400000, guid: 1979c85853c3d1144bf18366d96380ee, type: 2}
   - {fileID: 11400000, guid: dd39d6b65be3a5d479060d5aa063b14f, type: 2}
   - {fileID: 11400000, guid: 5547cf46b09b6854fb63b9d808eac71b, type: 2}
-  - {fileID: 11400000, guid: 1d067c237afb5084995e723b42c09cd3, type: 2}
   - {fileID: 11400000, guid: 9afa25158c4021342ba934466bd94240, type: 2}
-  - {fileID: 11400000, guid: 6b827b5747f0ced46a2a0d8577c62666, type: 2}
   - {fileID: 11400000, guid: 944b5730fa5c3ec4bb60e7e29a09d88b, type: 2}
   - {fileID: 11400000, guid: 78418d61338c95b4880f32e998e675b3, type: 2}
   - {fileID: 11400000, guid: 8f205e88be912b54489c3e421b284fa0, type: 2}

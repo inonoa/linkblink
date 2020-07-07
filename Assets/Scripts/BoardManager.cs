@@ -32,8 +32,6 @@ public class BoardManager : MonoBehaviour
 
     [SerializeField] PointEffectMover nodePointPrefab;
     [SerializeField] PointEffectMover beamPointPrefab;
-
-    public Vector2 NodeDistanceUnit{ get; set; }
     public ScoreManager ScoreManager{ get; set; }
     [SerializeField] SoundAndVolume lineDeletedSound;
 
