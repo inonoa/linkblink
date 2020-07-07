@@ -129,7 +129,7 @@ MonoBehaviour:
   - _Type: 14
     <Prefab>k__BackingField: {fileID: 3729022334464041931, guid: 48f542aa8952a114ead91e4703c8b5e2,
       type: 3}
-    <EditorColor>k__BackingField: {r: 0.6132076, g: 0.13594696, b: 0.5122487, a: 1}
+    <EditorColor>k__BackingField: {r: 0.49056602, g: 0.09487361, b: 0.40813002, a: 1}
     <BeamColor>k__BackingField: {r: 0.8679245, g: 0.118725546, b: 0.8679245, a: 1}
     <BeamColor2>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
     <BeamEmit>k__BackingField: {r: 0.14150941, g: 0.043387324, b: 0.13709018, a: 1}

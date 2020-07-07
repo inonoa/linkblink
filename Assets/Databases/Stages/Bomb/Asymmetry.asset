@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a47b3f0f7b9c3a49b3f72bfc43919d8, type: 3}
+  m_Name: Asymmetry
+  m_EditorClassIdentifier: 
+  memo: 
+  difficulty: 0
+  newElementTags: 
+  _DistanceUnit: {x: 2, y: 2}
+  _BombRadius: 1.02
+  _Rows:
+  - _Nodes: 0300000002000000010000000200000003000000
+  - _Nodes: 020000000d000000030000000400000001000000
+  - _Nodes: 0000000002000000010000000000000004000000
+  - _Nodes: 0300000004000000030000000000000003000000
