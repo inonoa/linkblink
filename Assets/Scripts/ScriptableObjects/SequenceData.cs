@@ -37,4 +37,9 @@ public class SequenceData : ScriptableObject
     void AddToGameData(){
         GameData.Instance.Add(this);
     }
+    [ExecuteInEditMode]
+    public void Add(StageData stage){
+        _Stages = _Stages.Append(stage).ToArray();
+        EditorUtility.SetDirty(this);
+    }
 }

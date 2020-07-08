@@ -49,6 +49,10 @@ public class StageData : ScriptableObject{
             );
         }
     }
+    [ExecuteInEditMode]
+    public void ToSequence(SequenceData sequence){
+        sequence.Add(this);
+    }
 }
 
 [Serializable]

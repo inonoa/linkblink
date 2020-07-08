@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2889efc15f287d4c90621d6e924f964, type: 3}
-  m_Name: Unique
-  m_EditorClassIdentifier: 
-  _Name: Unique
-  memo: 
+  m_Name: 2_Normal
+  m_EditorClassIdentifier: Assembly-CSharp::SequenceData
+  _Name: Normal
+  memo: "\u56DB\u8272\u3092\u51FA\u3059\n\u9ED2\u3068\u591A\u8272\u3069\u3063\u3061\u304C\u3044\u3044\u304B\u306A\u3042\n\u4E21\u65B9\u3067\u3044\u3044\u304B"
   _Stages: []
-  _InitialScores: 

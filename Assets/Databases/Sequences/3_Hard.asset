@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2889efc15f287d4c90621d6e924f964, type: 3}
-  m_Name: Hard
+  m_Name: 3_Hard
   m_EditorClassIdentifier: 
   _Name: Hard
-  memo: 
+  memo: "\u7206\u5F3E\u3092\u51FA\u3059"
   _Stages:
   - {fileID: 11400000, guid: 6b5d3d3230d17d347bb6ccbc102da108, type: 2}
   - {fileID: 11400000, guid: 883763c03d004a048b485708cc2d98ac, type: 2}
@@ -25,4 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b030a6d4f5316743838d5530fcc03ca, type: 2}
   - {fileID: 11400000, guid: 9810d5844cd543745af6f00268f9cac5, type: 2}
   - {fileID: 11400000, guid: 38cc2a604d9b22941a681de46e8ef3d3, type: 2}
-  _InitialScores: 
+  - {fileID: 11400000, guid: 579403f7afb7cfb4196f499f8d80ed25, type: 2}
