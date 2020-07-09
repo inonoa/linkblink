@@ -42,7 +42,7 @@ public class StageLoder : MonoBehaviour
             Transform row = Instantiate(rowPrefab, board.transform).transform;
 
             (float upBound, float downBound) = (actualSize.y / 2, - actualSize.y / 2);
-            row.position = new Vector3(0, Mathf.Lerp(upBound, downBound, (float)i / (stage.Rows.Count - 1)), 0);
+            row.position += new Vector3(0, Mathf.Lerp(upBound, downBound, (float)i / (stage.Rows.Count - 1)), 0);
 
             for(int j = 0; j < stage.Rows[i].Nodes.Count; j++){
                 

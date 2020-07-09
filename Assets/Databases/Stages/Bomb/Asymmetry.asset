@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a47b3f0f7b9c3a49b3f72bfc43919d8, type: 3}
   m_Name: Asymmetry
   m_EditorClassIdentifier: 
-  memo: 
+  memo: "\u8D64\u3092\u3059\u3079\u3066\u4F7F\u308F\u306A\u304F\u3066\u3044\u3044\u3068\u3044\u3046\u3053\u3068\u306B\u6C17\u3065\u304F\u307E\u3067\u6642\u9593\u3092\u8981\u3057\u305F"
   difficulty: 0
   newElementTags: 
   _DistanceUnit: {x: 2, y: 2}
