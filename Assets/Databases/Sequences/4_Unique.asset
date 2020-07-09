@@ -14,4 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Name: Unique
   memo: "\u8A98\u7206\u3092\u51FA\u3059"
-  _Stages: []
+  _Stages:
+  - {fileID: 11400000, guid: a04be5fc84d574c499d166e8e08c5b29, type: 2}
+  - {fileID: 11400000, guid: 9afa25158c4021342ba934466bd94240, type: 2}
+  - {fileID: 11400000, guid: 1d067c237afb5084995e723b42c09cd3, type: 2}
+  - {fileID: 11400000, guid: 1979c85853c3d1144bf18366d96380ee, type: 2}
+  - {fileID: 11400000, guid: ada03cfb9889adc47853a0fd3319d520, type: 2}
+  - {fileID: 11400000, guid: 9810d5844cd543745af6f00268f9cac5, type: 2}
+  - {fileID: 11400000, guid: 883763c03d004a048b485708cc2d98ac, type: 2}
+  - {fileID: 11400000, guid: 2f90be4b639d662418c5aaf330feda9d, type: 2}
+  - {fileID: 11400000, guid: e6ab50e5ea7ae6744bdabc815e4c1fb6, type: 2}
+  - {fileID: 11400000, guid: 28e7009ea2dc67844a222ad184a3020e, type: 2}

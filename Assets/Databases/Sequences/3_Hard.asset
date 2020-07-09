@@ -15,14 +15,13 @@ MonoBehaviour:
   _Name: Hard
   memo: "\u7206\u5F3E\u3092\u51FA\u3059"
   _Stages:
-  - {fileID: 11400000, guid: 6b5d3d3230d17d347bb6ccbc102da108, type: 2}
-  - {fileID: 11400000, guid: 883763c03d004a048b485708cc2d98ac, type: 2}
-  - {fileID: 11400000, guid: a04be5fc84d574c499d166e8e08c5b29, type: 2}
-  - {fileID: 11400000, guid: 100ee98a995ae6947a3f00e6d7acb1dc, type: 2}
-  - {fileID: 11400000, guid: 0340f7e9e52f1104d8991a1ef7d347e9, type: 2}
   - {fileID: 11400000, guid: f8b413d9b451f2d47a08a8f8c25af87a, type: 2}
-  - {fileID: 11400000, guid: 63682a615bb64d14080c995ef43ac833, type: 2}
   - {fileID: 11400000, guid: 6b030a6d4f5316743838d5530fcc03ca, type: 2}
-  - {fileID: 11400000, guid: 9810d5844cd543745af6f00268f9cac5, type: 2}
-  - {fileID: 11400000, guid: 38cc2a604d9b22941a681de46e8ef3d3, type: 2}
-  - {fileID: 11400000, guid: 579403f7afb7cfb4196f499f8d80ed25, type: 2}
+  - {fileID: 11400000, guid: de7024ad4e936934b96254416c7e7abd, type: 2}
+  - {fileID: 11400000, guid: 5d2eb2305849200498954f9fbfb97fd4, type: 2}
+  - {fileID: 11400000, guid: 5547cf46b09b6854fb63b9d808eac71b, type: 2}
+  - {fileID: 11400000, guid: 8f205e88be912b54489c3e421b284fa0, type: 2}
+  - {fileID: 11400000, guid: 944b5730fa5c3ec4bb60e7e29a09d88b, type: 2}
+  - {fileID: 11400000, guid: 100ee98a995ae6947a3f00e6d7acb1dc, type: 2}
+  - {fileID: 11400000, guid: 7ed7491a8406c8a4cb0173475e0a9e68, type: 2}
+  - {fileID: 11400000, guid: 78418d61338c95b4880f32e998e675b3, type: 2}

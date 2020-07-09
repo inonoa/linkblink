@@ -45,4 +45,18 @@ public class GameData : ScriptableObject{
         }
         "おわりー".print();
     }
+    [ExecuteInEditMode][Button]
+    public void AllStagesTest(){
+        HashSet<StageData> stagesInSeqs = new HashSet<StageData>();
+        foreach(StageData[] stages in Sequences.Select(seq => seq.Stages)){
+            foreach(StageData stage in stages){
+                stagesInSeqs.Add(stage);
+            }
+        }
+        foreach(StageData stage in Resources.FindObjectsOfTypeAll(typeof(StageData)) as StageData[]){
+            if(!stagesInSeqs.Contains(stage)){
+                Debug.LogError(stage.name + "はどのSequenceにも入っていません");
+            }
+        }
+    }
 }

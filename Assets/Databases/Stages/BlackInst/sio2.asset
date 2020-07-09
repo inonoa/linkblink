@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memo: 
   difficulty: 3
+  newElementTags: 
   _DistanceUnit: {x: 0, y: 0}
+  _BombRadius: 1.02
   _Rows:
-  - _Nodes: 050000000500000005000000
-  - _Nodes: 050000000600000005000000
-  - _Nodes: 050000000500000005000000
+  - _Nodes: 010000000100000001000000
+  - _Nodes: 010000000600000001000000
+  - _Nodes: 010000000100000001000000

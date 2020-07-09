@@ -14,4 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SequenceData
   _Name: Normal
   memo: "\u56DB\u8272\u3092\u51FA\u3059\n\u9ED2\u3068\u591A\u8272\u3069\u3063\u3061\u304C\u3044\u3044\u304B\u306A\u3042\n\u4E21\u65B9\u3067\u3044\u3044\u304B"
-  _Stages: []
+  _Stages:
+  - {fileID: 11400000, guid: 55fd9639299993345b35ab6de2d28969, type: 2}
+  - {fileID: 11400000, guid: df66858784e65de4da2b2c918e61c798, type: 2}
+  - {fileID: 11400000, guid: 45e65941a3d0a9f4d8683cbd8424f685, type: 2}
+  - {fileID: 11400000, guid: 02fb518e060dc8344b8af2639ac40deb, type: 2}
+  - {fileID: 11400000, guid: 0340f7e9e52f1104d8991a1ef7d347e9, type: 2}
+  - {fileID: 11400000, guid: 63682a615bb64d14080c995ef43ac833, type: 2}
+  - {fileID: 11400000, guid: adee0ddc0cdb85147b6e457bac00acc8, type: 2}
+  - {fileID: 11400000, guid: d9af260e585540747b8cd5b72b55cffe, type: 2}
+  - {fileID: 11400000, guid: 730d5f263c7436640a8685d6fbb32278, type: 2}
+  - {fileID: 11400000, guid: 2960d23028adf9a41bcc561171b6e2bf, type: 2}
