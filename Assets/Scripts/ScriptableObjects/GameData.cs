@@ -25,7 +25,9 @@ public class GameData : ScriptableObject{
     [ExecuteInEditMode]
     public void Add(SequenceData sequence){
         _Sequences = _Sequences.Append(sequence).ToArray();
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
     }
 
 

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _StartStage: 0
   _LoopSameStage: 0
-  _LinkTrigger: 0
+  _LinkTrigger: 1
   <BestScoreSuffix>k__BackingField: bestScore2
