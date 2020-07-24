@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2889efc15f287d4c90621d6e924f964, type: 3}
-  m_Name: Test
+  m_Name: 99_Test
   m_EditorClassIdentifier: 
   _Name: Test
   memo: 
   _Stages:
+  - {fileID: 11400000, guid: f8b413d9b451f2d47a08a8f8c25af87a, type: 2}
+  - {fileID: 11400000, guid: 7ab66c36e47a20847a15aadec1f7e8cf, type: 2}
   - {fileID: 11400000, guid: 1979c85853c3d1144bf18366d96380ee, type: 2}
   - {fileID: 11400000, guid: 6b827b5747f0ced46a2a0d8577c62666, type: 2}
   - {fileID: 11400000, guid: 1d067c237afb5084995e723b42c09cd3, type: 2}

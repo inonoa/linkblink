@@ -14,7 +14,7 @@ public class StageData : ScriptableObject{
         None, ForTutorial, Easy, Normal, Hard, Lunatic
     }
     [SerializeField] Difficulty difficulty;
-    [SerializeField] ElementTag[] newElementTags;
+    [SerializeField] ElementTag[] newElementTags = new ElementTag[0];
     public IReadOnlyList<ElementTag> NewElementTags => newElementTags;
     [SerializeField] Vector2 _DistanceUnit = new Vector2();
     public Vector2 DistanceUnit => _DistanceUnit;
@@ -48,6 +48,10 @@ public class StageData : ScriptableObject{
                 Enumerable.Repeat<NodeType>(type, columns).ToArray()
             );
         }
+    }
+    [ExecuteInEditMode]
+    public void ToSequence(SequenceData sequence){
+        sequence.Add(this);
     }
 }
 

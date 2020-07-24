@@ -23,18 +23,29 @@ public class SequenceData : ScriptableObject
 
     public void AddToFirst(StageData stage){
         _Stages = new StageData[]{ stage }.Concat(_Stages).ToArray();
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
     }
     public void MoveToFirst(StageData stage){
         _Stages = _Stages.ToList()
                          .Except(new StageData[]{ stage })
                          .Prepend(stage)
                          .ToArray();
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
     }
 
     [Button]
     void AddToGameData(){
         GameData.Instance.Add(this);
+    }
+    [ExecuteInEditMode]
+    public void Add(StageData stage){
+        _Stages = _Stages.Append(stage).ToArray();
+#if UNITY_EDITOR
+        EditorUtility.SetDirty(this);
+#endif
     }
 }

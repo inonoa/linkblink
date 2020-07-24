@@ -15,7 +15,7 @@ MonoBehaviour:
   memo: 
   difficulty: 0
   newElementTags: 
-  _DistanceUnit: {x: 1.2, y: 1.2}
+  _DistanceUnit: {x: 1.1, y: 1.1}
   _BombRadius: 1.02
   _Rows:
   - _Nodes: 010000000000000006000000000000000100000000000000060000000000000001000000

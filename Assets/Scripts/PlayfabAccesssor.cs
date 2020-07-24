@@ -18,7 +18,7 @@ public class PlayfabAccesssor
     }
     private PlayfabAccesssor(){ }
 
-    static readonly string CUSTOM_ID_SAVE_KEY = "CUSTOM_ID_SAVE_KEY";
+    static readonly string CUSTOM_ID_SAVE_KEY = "ID_SAVE_KEY";
 
     public string ID{ get; private set; }
     private PlayfabAccesssor RequestLogin(){

@@ -10,6 +10,7 @@ public class StageDataEditor : Editor
     int num_columns = 0;
     int num_rows = 0;
     NodeType type2Fill = NodeType.None;
+    SequenceData sequenceParam;
 
     public override void OnInspectorGUI(){
         serializedObject.Update();
@@ -116,6 +117,17 @@ public class StageDataEditor : Editor
 
         }
         GUI.color = defaultColor;
+
+        EditorGUILayout.Space(30);
+
+        using(new EditorGUILayout.HorizontalScope())
+        {
+            sequenceParam = EditorGUILayout.ObjectField(sequenceParam, typeof(SequenceData), true) as SequenceData;
+
+            if(GUILayout.Button("に入れる")){
+                (target as StageData).ToSequence(sequenceParam);
+            }
+        }
 
         EditorGUILayout.Space(30);
 

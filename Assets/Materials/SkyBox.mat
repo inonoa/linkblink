@@ -67,7 +67,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LightDistance: -0.1
+    - _LightDistance: 4.995827
     - _LightWidth: 0.03
     - _Metallic: 0
     - _Mode: 0
